@@ -1,14 +1,65 @@
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  /* background-image: url('/images/b.jpeg');
+    /* font-family: 'Barlow Semi Condensed', sans-serif; */
+  /* font-family: 'Yatra One', cursive; */
+  /* font-family: 'Cormorant', serif; */
+}Copyright
+
+
+/* div.container-fluid {
+  background-image: url('/images/b.jpeg');
   background-attachment: fixed;
-  background-position: center;  */
+  background-position: center; 
+} */
 
+.book_container {
+  font-family: 'David Libre', serif;
+  font-size: 18px;
 }
 
-a {
-  color: #00B7FF;
+.badge {
+  font-family: 'Jura', sans-serif;
+  font-size: 90% !important;
 }
+
+#footwear {
+  margin: 15px 0px;
+}
+
+
+
+
+footer {
+  background-color: #F2F2F2;
+  margin-top: 10px;
+}
+
+
+
+
+/* CSS styling for book rating */
+.fa-star,.fa-star-o{
+color:orange;
+}
+
+.rating{
+width: 50%;
+float:left;
+}
+.rating p{
+margin-top:10px;
+}
+
+@media (min-width:320px) and (max-width:640px){
+  .rating{
+  width: 100%;
+  }
+  .rating-process{
+  width:100%;
+  }	
+}
+
+/* enf of CSS styling for book rating */
 
 
 /* CSS for login form */
