@@ -1,14 +1,35 @@
-<nav class="navbar navbar-expand-sm bg-light navbar-dark sticky-top">
+<nav class="navbar d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
+    <h5 class="my-0 mr-md-auto font-weight-normal">
+        <a class="nav-link active" href="/">
+            <i class="fas fa-home"></i> Wirtualna czytelnia </a>
+    </h5>
+    
+    <nav class="my-2 my-md-0 mr-md-3">
+        <a class="p-2 text-dark" href="/books">Katalog</a>
+        
+        <!-- jesli user zalogowany -->
+        <div class="btn-group">
+            <button type="button" class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-user"></i> Mój profil
+            </button>
 
-    <ul class="nav" role="tablist">
-        <li class="nav-item">
-        <a class="nav-link active" href="/"><i class="fas fa-home"></i></a>
-        </li>
-        <li class="nav-item">
-        <a class="nav-link" href="/login"> <i class="fa fa-user"></i>  Logowanie</a>
-        </li>
-        <li class="nav-item">
-        <a class="nav-link" href="/register"> <i class="fa fa-registered"></i> Rejestracja</a>
-        </li>
-    </ul>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="/library">Biblioteka</a>
+                <a class="dropdown-item" href="/library">Biblioteka</a>
+                <a class="dropdown-item" href="/library">Biblioteka</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="/">
+                    <i class="fas fa-sign-out-alt"></i> Wyloguj
+                </a>
+            </div>
+
+        </div>
+
+    </nav>
+
+    <div class="btn-group" role="group">
+        <a class="btn btn-primary" href="/login" role="button">Logowanie</a>
+        <a class="btn btn-outline-primary" href="/register" role="button">Rejestracja</a>
+    </div>
+
 </nav>

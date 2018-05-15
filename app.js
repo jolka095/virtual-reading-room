@@ -9,7 +9,8 @@ var usersRouter = require('./routes/users');
 var registerRouter = require('./routes/register');
 var loginRouter = require('./routes/login');
 var passwordHelpRouter = require('./routes/password-help');
-
+var booksRouter = require('./routes/books');
+var libraryRouter = require('./routes/library');
 var app = express();
 
 // view engine setup
@@ -24,10 +25,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+
 app.use('/register', registerRouter);
 app.use('/login', loginRouter);
 app.use('/password-help', passwordHelpRouter);
-
+app.use('/books', booksRouter);
+app.use('/library', libraryRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
