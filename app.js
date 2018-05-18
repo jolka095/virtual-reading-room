@@ -16,7 +16,10 @@ var termsOfUse = require('./routes/terms-of-use');
 var policy = require('./routes/policy');
 var userProfile = require('./routes/user-profile');
 var series = require('./routes/series');
+
 var app = express();
+const db = require('./db')
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -41,6 +44,11 @@ app.use('/termsofuse', termsOfUse);
 app.use('/policy', policy);
 app.use('/user-profile', userProfile);
 app.use('/series', series);
+
+// page not found
+app.get('*', function(req, res){
+  res.render('page_not_found')
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
