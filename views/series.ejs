@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('header.ejs') %>
+  </head>
+  <body>
+    <%- include('navbar.ejs') %>
+
+    <h1> Harry Potter Series </h1>
+
+    <div class="container series_container">
+        <div class="row">
+            <div class="col">
+                <img class="img-fluid rounded mx-auto d-block" src="/images/harry_potter_cover.jpeg" alt="Harry Potter 1" onclick="pageRedirect()">
+                <p>Harry potter and the Philosopher's Stone</p>
+            </div>
+            <div class="col">
+                <img class="img-fluid rounded mx-auto d-block" src="/images/harry_potter_2.jpeg" alt="Harry Potter 2">
+                <p>Harry Potter and the Chamber of Secrets</p>
+            </div>
+            <div class="col">
+                <img class="img-fluid rounded mx-auto d-block" src="/images/harry_potter_3.jpg" alt="Harry Potter 3">
+                <p>Harry Potter and the Prizoners Azkaban</p>
+            </div>
+            <div class="col">
+                <img class="img-fluid rounded mx-auto d-block" src="/images/harry_potter_4.jpeg" alt="Harry Potter 4">
+                <p>Harry Potter and the Goblet of Fire</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <img class="img-fluid rounded mx-auto d-block" src="/images/harry_potter_5.jpg" alt="Harry Potter 5">
+                <p>Harry potter and the Order of the Phoenix</p>
+            </div>
+            <div class="col">
+                <img class="img-fluid rounded mx-auto d-block" src="/images/harry_potter_6.jpg" alt="Harry Potter 6">
+                <p>Harry Potter and the Half-blood Prince</p>
+            </div>
+            <div class="col">
+                <img class="img-fluid rounded mx-auto d-block" src="/images/harry_potter_7.jpg" alt="Harry Potter 7">
+                <p>Harry Potter and the Deathly Hallows</p>
+            </div>
+            <div class="col"></div>
+        </div>
+
+    </div>
+
+
+    <script type="text/javascript">
+        function pageRedirect() {
+            window.location.href = "/books";
+        }
+    </script>
+
+    <%- include('footer.ejs') %>
+       
+  </body>
+</html>

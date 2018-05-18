@@ -15,6 +15,7 @@ var contact = require('./routes/contact');
 var termsOfUse = require('./routes/terms-of-use');
 var policy = require('./routes/policy');
 var userProfile = require('./routes/user-profile');
+var series = require('./routes/series');
 var app = express();
 
 // view engine setup
@@ -39,6 +40,7 @@ app.use('/contact', contact);
 app.use('/termsofuse', termsOfUse);
 app.use('/policy', policy);
 app.use('/user-profile', userProfile);
+app.use('/series', series);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
