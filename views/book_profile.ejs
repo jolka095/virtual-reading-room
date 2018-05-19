@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <%- include('header.ejs') %>
+</head>
+
+<body>
+    <%- include('navbar.ejs') %>
+
+        <%if (book || book !== undefined || book !== null) { %>
+            <div class="container book_container">
+
+                <div class="row">
+
+                    <div class="col-md-4 ">
+                        <img class="img-fluid rounded mx-auto d-block" src="/<%= book.image %>" alt="Harry Potter cover">
+                    </div>
+
+
+                    <div id="book_info" class="col-md-8">
+                        <div class="table-responsive-sm ">
+                            <table class="table">
+                                <tbody>
+                                    <tr class="table-active">
+                                        <th>Tytuł</th>
+                                        <td>
+                                            <strong>
+                                                <i>
+                                                    <%= book.title %>
+                                                </i>
+                                            </strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Autor</th>
+                                        <td>
+                                            <!-- redirect to all books from this author -->
+                                            <a href="/authors/<%= book.author_id %>">
+                                                <%= book.author %>
+                                            </a>
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Data wydania</th>
+                                        <td>
+                                            <%= book.publish_date %>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Wydawnictwo</th>
+                                        <td>
+                                            <%= book.publisher %>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>ISBN</th>
+                                        <td>
+                                            <%= book.ISBN %>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Kategoria</th>
+                                        <td>
+                                            <!-- redirect to all books from this category -->
+                                            <a href="/categories/<%= book.category_id %>">
+                                                <!-- <span class="badge badge-dark"> -->
+                                                <%= book.category %>
+                                                    <!-- </span> -->
+                                            </a>
+
+                                        </td>
+                                    </tr>
+                                    <%if (book.series || book.series !== undefined || book.series !== null) { %>
+                                    <tr>
+                                        <th>Seria</th>
+                                        <td>
+                                            <!-- redirect to all books from this category -->
+                                            <a href="/categories/<%= book.series_id %>">
+                                                <!-- <span class="badge badge-dark"> -->
+                                                <%= book.series %>
+                                                    <!-- </span> -->
+                                            </a>
+
+                                        </td>
+                                    </tr>
+                                    <% } %>
+                                    <tr>
+                                        <th>Ocena</th>
+                                        <td>
+                                            <div class="rating">
+                                                <i aria-hidden="true" class="fa fa-star"></i>
+                                                <i aria-hidden="true" class="fa fa-star"></i>
+                                                <i aria-hidden="true" class="fa fa-star"></i>
+                                                <i aria-hidden="true" class="fa fa-star"></i>
+                                                <i aria-hidden="true" class="fa fa-star"></i>
+                                                <strong>
+                                                    <%= book.avg_mark %>
+                                                </strong>
+                                                <p> <i class="fa fa-user" aria-hidden="true"></i>  <%= book.total_marks_num %> ocen </p>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+
+                        <!-- <div class="btn-group" role="group"> -->
+                        <a class="btn btn-secondary" href="#" role="button">
+                            <i class="fas fa-check-circle"></i> Przeczytane</a>
+                        <a class="btn btn-info" href="#" role="button">
+                            <i class="fas fa-chevron-circle-right"></i> Czytam</a>
+                        <a class="btn btn-success" href="#" role="button">
+                            <i class="fas fa-plus-circle"></i> Chcę przeczytać</a>
+                        <!-- </div>  -->
+                    </div>
+
+
+
+                </div>
+                <!-- row end -->
+
+                <br>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <button class="btn btn-light" type="button" data-toggle="collapse" data-target="#footwear" aria-expanded="false" aria-controls="footwear">
+                            <strong> Opis książki </strong>
+                        </button>
+
+                        <p class="text-justify collapse" id="footwear">
+                            <%= book.synopsis %>
+                        </p>
+
+                    </div>
+
+                </div>
+                <!-- row end -->
+
+                <!-- <div class="col-md-3 text-center">
+          <h3>
+            Inne książki z tej serii
+          </h3>
+
+      </div> -->
+
+            </div>
+
+
+
+
+
+            <% } %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <%- include('footer.ejs') %>
+</body>
+
+</html>
+
+<!-- Tytuł
+autor
+ocena
+średnia
+ilość ocen
+Rok
+seria -->

@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <%- include('header.ejs') %>
-  </head>
-  <body>
-    <%- include('navbar.ejs') %>
+
+<head>
+  <%- include('header.ejs') %>
+</head>
+
+<body>
+  <%- include('navbar.ejs') %>
 
     <div class="container book_container">
 
@@ -15,60 +17,79 @@
         </div>
 
         <div id="book_info" class="col-md-8">
-            
-            <ul class="card list-group list-group-flush">
-              <li class="list-group-item list-group-item-secondary"><h2><strong> Harry Potter i Kamień Filozoficzny </strong></h2></li>
-              <li class="list-group-item">Autor:  Joanne Kathleen Rowling </li>
-              <li class="list-group-item"> 
-                
-                <div class="rating">
-                  <h3>4.0</h3>
-                  <i aria-hidden="true" class="fa fa-star"></i>
-                  <i aria-hidden="true" class="fa fa-star"></i>
-                  <i aria-hidden="true" class="fa fa-star"></i>
-                  <i aria-hidden="true" class="fa fa-star"></i>
-                  <i aria-hidden="true" class="fa fa-star"></i>
-                  <p><i class="fa fa-user" aria-hidden="true"></i> 1,050,800 ocen</p>
-                </div>
 
-              </li>
+          <ul class="card list-group list-group-flush">
+            <li class="list-group-item list-group-item-secondary">
+              <h2>
+                <strong> Harry Potter i Kamień Filozoficzny </strong>
+              </h2>
+            </li>
+            <li class="list-group-item">Autor: Joanne Kathleen Rowling </li>
+            <li class="list-group-item">
 
-              <li class="list-group-item">Rok wydania: 2000 </li>
-              <li class="list-group-item">Seria: <a class="btn btn-outline" href="/series">Harry Potter</a> </li>
-              <li class="list-group-item">
-                Kategoria:
-                  <span class="badge badge-dark">fantastyka</span>
-                  <span class="badge badge-dark">fantasy</span>
-                  <span class="badge badge-dark">magia</span>
-                  <span class="badge badge-dark">literatura młodzieżowa</span>
-              </li>
+              <div class="rating">
+                <h3>4.0</h3>
+                <i aria-hidden="true" class="fa fa-star"></i>
+                <i aria-hidden="true" class="fa fa-star"></i>
+                <i aria-hidden="true" class="fa fa-star"></i>
+                <i aria-hidden="true" class="fa fa-star"></i>
+                <i aria-hidden="true" class="fa fa-star"></i>
+                <p>
+                  <i class="fa fa-user" aria-hidden="true"></i> 1,050,800 ocen</p>
+              </div>
 
-            </ul>
-            <br>
-            <!-- <div class="btn-group" role="group"> -->
-                <a class="btn btn-outline-success" href="#" role="button"> <i class="fas fa-check-circle"></i> Przeczytane</a>
-                <a class="btn btn-outline-info" href="#" role="button"> <i class="fas fa-chevron-circle-right"></i> Czytam</a>
-                <a class="btn btn-outline-danger" href="#" role="button"> <i class="fas fa-plus-circle"></i> Chcę przeczytać</a>
-            <!-- </div>  -->
+            </li>
+
+            <li class="list-group-item">Rok wydania: 2000 </li>
+            <li class="list-group-item">Seria:
+              <a class="btn btn-outline" href="/series">Harry Potter</a>
+            </li>
+            <li class="list-group-item">
+              Kategoria:
+              <span class="badge badge-dark">fantastyka</span>
+              <span class="badge badge-dark">fantasy</span>
+              <span class="badge badge-dark">magia</span>
+              <span class="badge badge-dark">literatura młodzieżowa</span>
+            </li>
+
+          </ul>
+          <br>
+          <!-- <div class="btn-group" role="group"> -->
+          <a class="btn btn-secondary" href="#" role="button">
+            <i class="fas fa-check-circle"></i> Przeczytane</a>
+          <a class="btn btn-info" href="#" role="button">
+            <i class="fas fa-chevron-circle-right"></i> Czytam</a>
+          <a class="btn btn-success" href="#" role="button">
+            <i class="fas fa-plus-circle"></i> Chcę przeczytać</a>
+          <!-- </div>  -->
         </div>
 
-      </div> <!-- row end -->
+      </div>
+      <!-- row end -->
 
       <br>
 
       <div class="row">
         <div class="col-md-12">
-          <button class="btn btn-light" type="button" data-toggle="collapse" data-target="#footwear" aria-expanded="false" aria-controls="footwear"> <strong> Opis książki </strong> </button>
-          
+          <button class="btn btn-light" type="button" data-toggle="collapse" data-target="#footwear" aria-expanded="false" aria-controls="footwear">
+            <strong> Opis książki </strong>
+          </button>
+
           <p class="text-justify collapse" id="footwear">
-              Po piętnastu latach od polskiej premiery „Harry’ego Pottera” Pottermaniacy mają powód do świętowania! Długo oczekiwane ilustrowane wydanie pierwszej części cyklu „Harry Potter i Kamień Filozoficzny” ukazuje się z ponad 100 ilustracjami. Ich autorem jest Brytyjczyk Jim Kay, zdobywca nagrody Kate Greenway Medal.
-  
-              Jedenastoletni Harry Potter to sierota i podrzutek, który od niemowlęcia wychowywany był przez ciotkę i wuja, którzy traktowali go jak piąte koło u wozu. Pochodzenie chłopca owiane jest tajemnicą; jedyną pamiątką Harry'ego z przeszłości jest zagadkowa blizna na czole. Skąd jednak biorą się niesamowite zjawiska, które towarzyszą nieświadomemu niczego Potterowi? Harry nigdy by się nie spodziewał, że można latać na miotle, znać bardzo pożyteczne zaklęcia i nosić pelerynę niewidkę. Nigdy też nie przyszłoby mu do głowy, że to właśnie on stoczy walkę z potężnym i złym Lordem Voldermortem.
+            Po piętnastu latach od polskiej premiery „Harry’ego Pottera” Pottermaniacy mają powód do świętowania! Długo oczekiwane ilustrowane
+            wydanie pierwszej części cyklu „Harry Potter i Kamień Filozoficzny” ukazuje się z ponad 100 ilustracjami. Ich
+            autorem jest Brytyjczyk Jim Kay, zdobywca nagrody Kate Greenway Medal. Jedenastoletni Harry Potter to sierota
+            i podrzutek, który od niemowlęcia wychowywany był przez ciotkę i wuja, którzy traktowali go jak piąte koło u
+            wozu. Pochodzenie chłopca owiane jest tajemnicą; jedyną pamiątką Harry'ego z przeszłości jest zagadkowa blizna
+            na czole. Skąd jednak biorą się niesamowite zjawiska, które towarzyszą nieświadomemu niczego Potterowi? Harry
+            nigdy by się nie spodziewał, że można latać na miotle, znać bardzo pożyteczne zaklęcia i nosić pelerynę niewidkę.
+            Nigdy też nie przyszłoby mu do głowy, że to właśnie on stoczy walkę z potężnym i złym Lordem Voldermortem.
           </p>
-        
+
         </div>
 
-      </div> <!-- row end -->
+      </div>
+      <!-- row end -->
 
       <!-- <div class="col-md-3 text-center">
           <h3>
@@ -80,7 +101,8 @@
     </div>
 
     <%- include('footer.ejs') %>
-  </body>
+</body>
+
 </html>
 
 <!-- Tytuł

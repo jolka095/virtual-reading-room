@@ -27,6 +27,9 @@ body {
 }
 
 
+table th {
+  text-align: right;
+}
 
 
 footer {
