@@ -14,7 +14,7 @@
                 <div class="row">
 
                     <div class="col-md-4 ">
-                        <img class="img-fluid rounded mx-auto d-block" src="/<%= book.image %>" alt="Harry Potter cover">
+                        <img class="img-fluid mx-auto d-block" src="/<%= book.image %>" alt="book cover">
                     </div>
 
 
@@ -36,7 +36,7 @@
                                         <th>Autor</th>
                                         <td>
                                             <!-- redirect to all books from this author -->
-                                            <a href="/authors/<%= book.author_id %>">
+                                            <a href="/books/authors/<%= book.author_id %>">
                                                 <%= book.author %>
                                             </a>
 
@@ -64,7 +64,7 @@
                                         <th>Kategoria</th>
                                         <td>
                                             <!-- redirect to all books from this category -->
-                                            <a href="/categories/<%= book.category_id %>">
+                                            <a href="/books/category/<%= book.category_id %>">
                                                 <!-- <span class="badge badge-dark"> -->
                                                 <%= book.category %>
                                                     <!-- </span> -->
@@ -72,36 +72,38 @@
 
                                         </td>
                                     </tr>
-                                    <%if (book.series || book.series !== undefined || book.series !== null) { %>
-                                    <tr>
-                                        <th>Seria</th>
-                                        <td>
-                                            <!-- redirect to all books from this category -->
-                                            <a href="/categories/<%= book.series_id %>">
-                                                <!-- <span class="badge badge-dark"> -->
-                                                <%= book.series %>
-                                                    <!-- </span> -->
-                                            </a>
+                                    <%if (book.series !== undefined && book.series !== null) { %>
+                                        <tr>
+                                            <th>Seria</th>
+                                            <td>
+                                                <!-- redirect to all books from this category -->
+                                                <a href="/series/<%= book.series_id %>">
+                                                    <!-- <span class="badge badge-dark"> -->
+                                                    <%= book.series %>
+                                                        <!-- </span> -->
+                                                </a>
 
-                                        </td>
-                                    </tr>
-                                    <% } %>
-                                    <tr>
-                                        <th>Ocena</th>
-                                        <td>
-                                            <div class="rating">
-                                                <i aria-hidden="true" class="fa fa-star"></i>
-                                                <i aria-hidden="true" class="fa fa-star"></i>
-                                                <i aria-hidden="true" class="fa fa-star"></i>
-                                                <i aria-hidden="true" class="fa fa-star"></i>
-                                                <i aria-hidden="true" class="fa fa-star"></i>
-                                                <strong>
-                                                    <%= book.avg_mark %>
-                                                </strong>
-                                                <p> <i class="fa fa-user" aria-hidden="true"></i>  <%= book.total_marks_num %> ocen </p>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                            </td>
+                                        </tr>
+                                        <% } %>
+                                            <tr>
+                                                <th>Ocena</th>
+                                                <td>
+                                                    <div class="rating">
+                                                        <i aria-hidden="true" class="fa fa-star"></i>
+                                                        <i aria-hidden="true" class="fa fa-star"></i>
+                                                        <i aria-hidden="true" class="fa fa-star"></i>
+                                                        <i aria-hidden="true" class="fa fa-star"></i>
+                                                        <i aria-hidden="true" class="fa fa-star"></i>
+                                                        <strong>
+                                                            <%= book.avg_mark %>
+                                                        </strong>
+                                                        <p>
+                                                            <i class="fa fa-user" aria-hidden="true"></i>
+                                                            <%= book.total_marks_num %> ocen </p>
+                                                    </div>
+                                                </td>
+                                            </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -148,26 +150,7 @@
 
             </div>
 
-
-
-
-
             <% } %>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
                 <%- include('footer.ejs') %>
 </body>

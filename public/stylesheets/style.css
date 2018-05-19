@@ -38,7 +38,16 @@ footer {
 }
 
 
+#books_container img {
+  width: 30rem;
+  height: 20rem;
+  max-height: 200px;
+  object-fit: contain;
+}
 
+#books_container .card {
+  max-width: 250px;
+}
 
 /* CSS styling for book rating */
 .fa-star,.fa-star-o{

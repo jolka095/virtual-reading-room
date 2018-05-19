@@ -1,43 +1,56 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <%- include('header.ejs') %>
-  </head>
-  <body>
+</head>
+
+<body>
     <%- include('navbar.ejs') %>
 
-    <div class="login-form">
-        <form action="/examples/actions/confirmation.php" method="post">
-            <h2 class="text-center">Rejestracja</h2>       
-            <div class="form-group">
+        <div class="login-form">
+            <form action="/registration" method="POST">
+                <h2 class="text-center">Rejestracja</h2>
+                <!-- <div class="form-group">
                 <input type="text" class="form-control" placeholder="Imię" required="required">
             </div>
             <div class="form-group">
                 <input type="password" class="form-control" placeholder="Nazwisko" required="required">
-            </div>
+            </div> -->
+                <div class="form-group">
+                    <input type="email" class="form-control" name="email" placeholder="E-mail" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="username" placeholder="Login" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" name="password" placeholder="Hasło" required>
+                </div>
 
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Login" required="required">
-            </div>
-            <div class="form-group">
-                <input type="password" class="form-control" placeholder="Hasło" required="required">
-            </div>
+                <div class="form-group">
+                    <!-- <label>Płeć</label> -->
+                    <select class="form-control">
+                        <option value="0" selected disabled>Płeć</option>
+                        <option value="M">Mężczyzna</option>
+                        <option value="F">Kobieta</option>
+                    </select>
 
-            <!-- dodać inne potrzebne pola -->
+                </div>
 
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary btn-block">Zarejestruj</button>
-            </div>
-            <div class="clearfix">
-                <!-- <label class="pull-left checkbox-inline"><input type="checkbox"> Zapamiętaj mnie </label>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block">Zarejestruj</button>
+                </div>
+                <div class="clearfix">
+                    <!-- <label class="pull-left checkbox-inline"><input type="checkbox"> Zapamiętaj mnie </label>
                 <br> -->
 
-                <a href="/login">Masz już konto? Zaloguj się!</a>
-            </div>        
-        </form>
-        
-    </div>
+                    <a href="/login">Masz już konto? Zaloguj się!</a>
+                </div>
+            </form>
 
-    <%- include('footer.ejs') %>    
-  </body>
+        </div>
+
+        <%- include('footer.ejs') %>
+</body>
+
 </html>
