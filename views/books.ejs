@@ -13,7 +13,7 @@
       <h2>Katalog</h2>
       <hr>
 
-      <%if (booksArr || booksArr !== undefined) { %>
+      <%if (booksArr !== undefined && booksArr !== null) { %>
         <div id="books_container">
 
           <div class="card-deck-wrapper">
@@ -21,7 +21,7 @@
               <% booksArr.forEach( (book) => { %>
 
                 <div class="card">
-                  <img class="card-img-top img-fluid mx-auto d-block" src="<%= book.image %>" alt="<%= book.title + " " + ' image' %>" >
+                  <img class="card-img-top img-fluid mx-auto d-block" src="/<%= book.image %>" alt="<%= book.title + " " + ' image' %>" >
                   <div class="card-body d-flex flex-column">
                     <p class="card-text"><strong><i>"<%= book.title %>"</i></strong>
                       <%= book.author %></p>
@@ -42,11 +42,3 @@
 </body>
 
 </html>
-
-<!-- Tytuł
-autor
-ocena
-średnia
-ilość ocen
-Rok
-seria -->

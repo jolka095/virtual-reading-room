@@ -8,7 +8,7 @@
 <body>
     <%- include('navbar.ejs') %>
 
-        <%if (book || book !== undefined || book !== null) { %>
+        <%if (book !== undefined && book !== null) { %>
             <div class="container book_container">
 
                 <div class="row">
@@ -77,7 +77,7 @@
                                             <th>Seria</th>
                                             <td>
                                                 <!-- redirect to all books from this category -->
-                                                <a href="/series/<%= book.series_id %>">
+                                                <a href="/books/series/<%= book.series_id %>">
                                                     <!-- <span class="badge badge-dark"> -->
                                                     <%= book.series %>
                                                         <!-- </span> -->
@@ -119,8 +119,6 @@
                         <!-- </div>  -->
                     </div>
 
-
-
                 </div>
                 <!-- row end -->
 
@@ -139,14 +137,6 @@
                     </div>
 
                 </div>
-                <!-- row end -->
-
-                <!-- <div class="col-md-3 text-center">
-          <h3>
-            Inne książki z tej serii
-          </h3>
-
-      </div> -->
 
             </div>
 
@@ -156,11 +146,3 @@
 </body>
 
 </html>
-
-<!-- Tytuł
-autor
-ocena
-średnia
-ilość ocen
-Rok
-seria -->
