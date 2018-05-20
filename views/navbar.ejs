@@ -5,12 +5,22 @@
             <i class="fas fa-home"></i> Wirtualna czytelnia </a>
     </h5>
 
-    <form class="form-inline">
+    <!-- <form action="/find" method="POST" class="form-inline">
         <input class="form-control" type="search" placeholder="Wpisz tytuł lub autora" aria-label="Szukaj">
         <button class="btn btn-primary" type="submit">
             <i class="fas fa-search"></i> Szukaj
         </button>
-    </form>
+    </form> -->
+
+    <form action="/find" method="POST">
+        <div class="input-group">
+          <input type="search" name="find_item" class="form-control input-sm" placeholder="tytuł/autor/kategoria" aria-label="Szukaj">
+          <div class="input-group-addon">
+            <button class="btn btn-primary btn-sm" type="submit">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+      </form>
 
     <nav class="my-2 my-md-0 mr-md-3">
 

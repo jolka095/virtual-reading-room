@@ -2,6 +2,10 @@ var express = require('express');
 var router = express.Router();
 const db = require('../db')
 
+router.get('/:book_id', function (req, res, next) {
+  res.redirect(`/book_profile/${req.params.book_id}`);
+});
+
 router.get('/category/:category_id', function (req, res, next) {
 
   const queryStatement = `SELECT * FROM book_info WHERE category_id = ${req.params.category_id}; `
