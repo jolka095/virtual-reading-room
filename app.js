@@ -19,7 +19,7 @@ var userProfile = require('./routes/user-profile');
 var series = require('./routes/series');
 
 var app = express();
-const db = require('./db')
+const db = require('./db');
 
 
 // view engine setup

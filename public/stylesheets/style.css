@@ -46,7 +46,9 @@ footer {
 }
 
 #books_container .card {
+  min-width: 200px;
   max-width: 250px;
+
 }
 
 /* CSS styling for book rating */

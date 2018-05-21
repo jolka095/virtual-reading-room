@@ -11,7 +11,7 @@ router.post('/', (req, res) => {
     const sql=`SELECT username FROM users WHERE email = ${req.body.email} and password = ${req.body.password};`;
 
     db.query(sql, function(err, results){
-        res.redirect('/user-profile');
+        res.redirect('/library');
     });
 });
 
