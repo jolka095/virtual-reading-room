@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-const db = require('../db')
+const db = require('../db');
 
 // empty profile
 router.get('/', (req, res, next) => {
@@ -24,6 +24,6 @@ router.get('/:book_id', (req, res, next) => {
             res.render('book_profile', { book: result[0] })
         }
     })
-})
+});
 
 module.exports = router;
