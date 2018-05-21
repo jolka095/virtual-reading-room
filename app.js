@@ -17,9 +17,11 @@ var termsOfUse = require('./routes/terms-of-use');
 var policy = require('./routes/policy');
 var userProfile = require('./routes/user-profile');
 var series = require('./routes/series');
+var logout = require('./routes/logout');
 
 var app = express();
 const db = require('./db');
+const epub = require('./parser');
 
 
 // view engine setup
@@ -46,6 +48,7 @@ app.use('/termsofuse', termsOfUse);
 app.use('/policy', policy);
 app.use('/user-profile', userProfile);
 app.use('/series', series);
+app.use('/logout', logout);
 
 // page not found
 app.get('*', function(req, res){

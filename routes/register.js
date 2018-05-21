@@ -12,9 +12,9 @@ router.get('/login', function(req, res, next) {
 router.post('/', (req, res) => {
 
     var user = {
-      "email":req.body.email,
-      "username":req.body.username,
-      "password":req.body.password
+      "email": req.body.email,
+      "username": req.body.username,
+      "password": req.body.password
     };
 
     db.query(`INSERT into users SET ?`, user , function (err, rows, fields) {
@@ -28,6 +28,11 @@ router.post('/', (req, res) => {
             res.send({
                 "code":200,
                 "success":"user registered sucessfully"
+            });
+
+            req.login(user, function(err) {
+                if (err) { return next(err); }
+                return res.redirect('/library' + req.user.username);
             });
         }
     })
