@@ -1,12 +1,11 @@
 const mysql = require('mysql');
-const dbName = "virtual_library"
+const dbName = 'virtual_library';
 
 const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: "admin",
   database: dbName
-})
+});
 
 connection.connect(function (err) {
   if (!err) {
@@ -16,4 +15,4 @@ connection.connect(function (err) {
   }
 });
 
-module.exports = connection
+module.exports = connection;

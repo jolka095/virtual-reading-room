@@ -36,8 +36,8 @@
                                         <th>Autor</th>
                                         <td>
                                             <!-- redirect to all books from this author -->
-                                            <a href="/books/authors/<%= book.author_id %>">
-                                                <%= book.author %>
+                                            <a href="/books/authors/<%= book.id_author %>">
+                                                <%= book.id_author %>
                                             </a>
 
                                         </td>
@@ -64,7 +64,7 @@
                                         <th>Kategoria</th>
                                         <td>
                                             <!-- redirect to all books from this category -->
-                                            <a href="/books/category/<%= book.category_id %>">
+                                            <a href="/books/category/<%= book.category %>">
                                                 <!-- <span class="badge badge-dark"> -->
                                                 <%= book.category %>
                                                     <!-- </span> -->
@@ -77,7 +77,7 @@
                                             <th>Seria</th>
                                             <td>
                                                 <!-- redirect to all books from this category -->
-                                                <a href="/books/series/<%= book.series_id %>">
+                                                <a href="/books/series/<%= book.idseries %>">
                                                     <!-- <span class="badge badge-dark"> -->
                                                     <%= book.series %>
                                                         <!-- </span> -->

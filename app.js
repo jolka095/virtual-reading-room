@@ -3,6 +3,8 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var epubParser = require('epub-parser');
+
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -17,10 +19,10 @@ var termsOfUse = require('./routes/terms-of-use');
 var policy = require('./routes/policy');
 var userProfile = require('./routes/user-profile');
 var series = require('./routes/series');
+var readMode = require('./routes/read-mode');
 
 var app = express();
-const db = require('./db')
-
+const db = require('./db');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -46,6 +48,7 @@ app.use('/termsofuse', termsOfUse);
 app.use('/policy', policy);
 app.use('/user-profile', userProfile);
 app.use('/series', series);
+app.use('/read-mode', readMode);
 
 // page not found
 app.get('*', function(req, res){
