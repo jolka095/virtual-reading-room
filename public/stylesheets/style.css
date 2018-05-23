@@ -15,7 +15,7 @@ body {
 .book_container {
   font-family: 'David Libre', serif;
   font-size: 18px;
-}
+ }
 
 .badge {
   font-family: 'Jura', sans-serif;
@@ -48,7 +48,6 @@ footer {
 #books_container .card {
   min-width: 200px;
   max-width: 250px;
-
 }
 
 /* CSS styling for book rating */
@@ -98,6 +97,12 @@ margin-top:10px;
 .btn {        
     font-size: 15px;
     font-weight: bold;
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+  padding-bottom: 20px;
 }
 
 /* end fo CSS for login form */
