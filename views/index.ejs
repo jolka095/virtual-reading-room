@@ -6,63 +6,75 @@
 </head>
 
 <body>
-  <%- include('navbar.ejs') %>
+  <%- include('navbar1.ejs') %>
 
     <main role="main">
-
+        
       <!-- Main jumbotron for a primary marketing message or call to action -->
-      <div class="jumbotron container text-center">
-
-          <h1>Witamy!</h1>
-          <form action="/find" method="POST">
-            <div class="input-group">
-              <input type="search" name="find_item" class="form-control" placeholder="Wpisz tytuł, autora lub kategorię" aria-label="Szukaj">
-              <div class="input-group-addon">
-                <button class="btn btn-primary" type="submit">
-                  <i class="fas fa-search"></i> Szukaj
-                </button>
-              </div>
-          </form>
-
+        <div class="jumbotron container text-left">
+            <div class="row">
+                <div class="col-md-8">
+                        <br><br><br>
+                    <h1>Twoja Wirtualna Czytelnia.</h1>
+                    <h4>Zanurz się w swojej ulubionej ksiażce.</h4>
+                                     
+                </div>
+                <div class="col-md-4 text-center">
+                        <form action="/register" method="POST">
+                            <h6> Dołącz do nas już teraz i wypróbuj serwis bezpłatnie przez 14 dni. </h6>
+                            <div class="form-group">
+                                <input type="email" class="form-control" name="email" placeholder="E-mail" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="username" placeholder="Login" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" name="password" placeholder="Hasło" required>
+                            </div>
+            
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-info btn-block">Zarejestruj</button>
+                                <div class="input-group-addon">
+                                    <input type="checkbox" id="remember_me" name="remember_me" checked tabindex="3"><label for="remember_me" class="greyText">Akceptuję regulamin</label>
+                                </div>
+                            </div>
+                        </form>
+                </div>
+            </div>
         </div>
-        <hr>
+    
+            <hr>
         <div class="container">
-          <!-- Example row of columns -->
-          <div class="row">
-            <div class="col-md-4">
-              <h2>Heading</h2>
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum
-                nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed
-                odio dui. </p>
-              <p>
-                <a class="btn btn-secondary" href="#" role="button">View details &raquo;</a>
-              </p>
+            <!-- Example row of columns -->
+            <div class="row">
+                <div class="col-md-6 text-center">
+                    <h4> <strong> Szukasz następnej epickiej lektury? </strong></h4>
+                    <div class="container ">
+                        Trafiłes we właściwe miejsce! Zdradź nam swoje ulubione gatunki, serie, ksiązki i ich autorów, a bedziemy w stanie polecić Ci lektury dopasowane idealnie do Twoich gustów. 
+                    </div>
+                </div>
+                <div class="col-md-6 text-center">
+                    <h4> <strong> Nie masz czasu na wizytę w księgarni? </strong></h4>
+                    <div class="container">
+                        Nic straconego! Zapewnimy Ci stały i szybki dostęp do nowych książek. Kolejną lekturę zdobędziesz siedzą w swoim ulubionym fotelu, po drodze do pracy czy stojąc w korku. Dzieli Cię od niej tylko kliknięcie!
+                    </div>
+                </div>
             </div>
-            <div class="col-md-4">
-              <h2>Heading</h2>
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum
-                nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed
-                odio dui. </p>
-              <p>
-                <a class="btn btn-secondary" href="#" role="button">View details &raquo;</a>
-              </p>
-            </div>
-            <div class="col-md-4">
-              <h2>Heading</h2>
-              <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta
-                felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum
-                massa justo sit amet risus.</p>
-              <p>
-                <a class="btn btn-secondary" href="#" role="button">View details &raquo;</a>
-              </p>
-            </div>
-          </div>
-
-
-
+                    
         </div>
-        <!-- /container -->
-
+        <div class="container">
+            <h5> Znajdź swoją kolejną ulubioną książkę i od razu zacznij czytać: </h5>
+            <form action="/find" method="POST">
+                <div class="input-group">
+                    <input type="search" name="find_item" class="form-control" placeholder="Wpisz tytuł, autora, kategorię lub serię" aria-label="Szukaj">
+                    <div class="input-group-addon">
+                    <button class="btn btn-primary" type="submit">
+                        <i class="fas fa-search"></i> Szukaj
+                    </button>
+                    </div>
+                </div>
+            </form>
+        </div>
     </main>
 
     <%- include('footer.ejs') %>

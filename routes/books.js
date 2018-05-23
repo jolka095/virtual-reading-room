@@ -6,6 +6,60 @@ router.get('/:book_id', function (req, res, next) {
   res.redirect(`/book_profile/${req.params.book_id}`);
 });
 
+// finding books version 1
+router.post('/find', (req, res) => {
+
+  let id = 0;
+  let item = req.body.find_item;
+
+  db.query(`SELECT book_id FROM book_info WHERE title="${item}"`, function (err, rows, fields) {
+
+    if (typeof rows !== 'undefined' && rows.length > 0) {
+      id = rows[0].book_id;
+      // console.log('id : ', id)
+      res.redirect(`/books/${id}`);
+    }
+    else {
+      console.log("\nSzukam dalej po autorze...");
+      db.query(`SELECT author_id FROM book_info WHERE author="${item}"`, function (err, rows, fields) {
+
+        if (typeof rows !== 'undefined' && rows.length > 0) {
+          id = rows[0].author_id;
+          // console.log('id : ', id)
+          res.redirect(`/books/authors/${id}`);
+        }
+        else {
+          console.log("\nSzukam dalej po kategorii...");
+          db.query(`SELECT category_id FROM book_info WHERE category="${item}"`, function (err, rows, fields) {
+
+            if (typeof rows !== 'undefined' && rows.length > 0) {
+              id = rows[0].category_id;
+              // console.log('id : ', id)
+              res.redirect(`/books/category/${id}`);
+            }
+             else {
+              console.log("\nSzukam dalej po serii...");
+              db.query(`SELECT series_id FROM book_info WHERE series="${item}"`, function (err, rows, fields) {
+
+                if (typeof rows !== 'undefined' && rows.length > 0) {
+                  id = rows[0].series_id;
+                  // console.log('id : ', id)
+                  res.redirect(`/books/series/${id}`);
+                }
+                else {
+                  console.log("\nBrak wyników...");
+                  res.send(`Brak wyników dla frazy ${item}`);
+                }
+              })
+             }
+          })
+        }
+      })
+    }
+  })
+})
+
+
 router.get('/category/:category_id', function (req, res, next) {
 
   const queryStatement = `SELECT * FROM book_info WHERE category_id = ${req.params.category_id}; `;
@@ -58,7 +112,7 @@ router.get('/series/:series_id', function (req, res, next) {
 
 router.get('/', function (req, res, next) {
 
-  const queryStatement = `SELECT * FROM books; `;
+  const queryStatement = `SELECT * FROM book_info; `;
 
   db.query(queryStatement, (error, result) => {
 

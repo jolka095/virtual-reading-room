@@ -33,10 +33,21 @@ router.post('/find', (req, res) => {
               // console.log('id : ', id)
               res.redirect(`/books/category/${id}`);
             }
-            else {
-              console.log("\nBrak wyników...");
-              res.send(`Brak wyników dla frazy ${item}`);
-            }
+             else {
+              console.log("\nSzukam dalej po serii...");
+              db.query(`SELECT series_id FROM book_info WHERE series="${item}"`, function (err, rows, fields) {
+
+                if (typeof rows !== 'undefined' && rows.length > 0) {
+                  id = rows[0].series_id;
+                  // console.log('id : ', id)
+                  res.redirect(`/books/series/${id}`);
+                }
+                else {
+                  console.log("\nBrak wyników...");
+                  res.send(`Brak wyników dla frazy ${item}`);
+                }
+              })
+             }
           })
         }
       })
@@ -46,7 +57,20 @@ router.post('/find', (req, res) => {
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  res.render('index');
+  const queryStatement = `SELECT * FROM categories; `;
+
+  db.query(queryStatement, (error, result) => {
+
+    if (result === null || result === undefined || result.length === 0) {
+
+      res.send("Nie znaleziono żadnych kategorii w bazie")
+
+    } 
+    else {
+    // console.log(JSON.stringify(result, null, 2))
+    res.render('index', { categoriesArr: result })
+  }
+})
 });
 
 module.exports = router;
