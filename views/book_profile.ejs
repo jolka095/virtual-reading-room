@@ -55,7 +55,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th>ISBN</th>
+                                        <th>ID</th>
                                         <td>
                                             <%= book.ISBN %>
                                         </td>
@@ -70,6 +70,18 @@
                                                     <!-- </span> -->
                                             </a>
 
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Dostępny język</th>
+                                        <td>
+                                            <%= book.language %>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Oryginalny tytuł</th>
+                                        <td>
+                                            <%= book.original_title %>
                                         </td>
                                     </tr>
                                     <%if (book.series !== undefined && book.series !== null) { %>

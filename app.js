@@ -21,7 +21,7 @@ var logout = require('./routes/logout');
 
 var app = express();
 const db = require('./db');
-const epub = require('./parser');
+//const epub = require('./parser');
 
 
 // view engine setup
