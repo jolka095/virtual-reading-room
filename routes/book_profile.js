@@ -15,7 +15,7 @@ router.get('/:book_id', (req, res, next) => {
     db.query(queryStatement, (error, result) => {
 
         if (result === null || result === undefined || result.length === 0) {
-            console.log(JSON.stringify(result[0], null, 2));
+         //   console.log(JSON.stringify(result[0], null, 2));
             const message = "Nie znaleziono takiej ksiażki w bazie";
             // res.render('resource_not_found', { message: message })
             res.render('page_not_found')

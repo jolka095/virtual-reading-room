@@ -3,8 +3,50 @@ body {
     /* font-family: 'Barlow Semi Condensed', sans-serif; */
   /* font-family: 'Yatra One', cursive; */
   /* font-family: 'Cormorant', serif; */
-}Copyright
+}
 
+nav .nav-link {
+  font-family: 'Cherry Swash', sans-serif;
+  font-size: 22px;
+  color: black;
+}
+
+nav input[type="text"],
+input::-webkit-input-placeholder {
+    font-size: 12px;
+}
+
+.greyText{
+  font-size: 12px;
+  color: grey;
+}
+
+main #cat_container {
+  margin: 5% auto 5% auto;
+  width: 40%;
+}
+
+main .col-md-6 {
+  margin: 5% auto 5% auto;
+
+}
+
+#first_look {
+  border: solid 1px grey;
+  border-radius: 1%;
+  padding-left: 2%;
+}
+
+#szukaj1 {
+  
+  padding: 3%;
+  margin: 0 auto 0 auto;
+}
+
+.jumbotron {
+  padding: 7%;
+
+}
 
 /* div.container-fluid {
   background-image: url('/images/b.jpeg');

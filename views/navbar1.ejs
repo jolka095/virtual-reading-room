@@ -1,0 +1,25 @@
+<nav class="navbar bg-white d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3  border-bottom box-shadow">
+      
+        <h5 class="my-0 mr-md-auto font-weight-normal" >
+            <a class="nav-link" class="form-inline" href="/">
+                <img  src="/images/logo_only.png" alt="Logo" width="100"> Wirtualna Czytelnia
+            </a>
+        </h5>
+        
+        <form class="navbar-form navbar-right" role="form" action="/login" method="post" class="form-inline">
+            <div class="input-group">
+                    <div class="formBox">
+                        <input type="text" size="25" class="form-control" name="email" placeholder="E-mail" required="required">
+                        <input type="checkbox" id="remember_me" name="remember_me" checked tabindex="3"><label for="remember_me" class="greyText">Remember me</label>
+                    </div>
+                <div class="formBox">
+                    <input type="password" size="15" class="form-control" name="password" placeholder="Hasło" required="required">
+                    <a class="greyText" id="userForgotPassword" rel="nofollow" href="/password-help">Zapomniałeś hasła?</a>
+                </div>
+                <div class="input-group-addon">
+                    <button type="submit" class="btn btn-info btn-block">Zaloguj</button>
+                </div>
+            </div>
+        </form>
+   
+</nav>
