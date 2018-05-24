@@ -36,11 +36,14 @@ main .col-md-6 {
   width: 80%;
 }
 
-#goToSimpleSearch:hover, #goToAdvancedSearch:hover {
+#goToSimpleSearch:hover, #goToAdvancedSearch:hover, #addNextSearchTag:hover {
   font-weight: bold;
   cursor: pointer;
 }
 
+.search_condition {
+  max-width: 90px;
+}
 .jumbotron {
   background-image: url('/images/jumbo1.jpg');
   color: white;

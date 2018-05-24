@@ -4,19 +4,28 @@ const db = require('../db');
 
 // finding books version 2
 router.post('/find', (req, res) => {
-
-  console.log("req.body:")
   console.log(JSON.stringify(req.body, null, 2))
 
-  let id = 0;
   let item = req.body.find_item;
   let search_for = req.body.search_for;
 
   let sql_condition = ''
+  let sql_condition_array = []
   let sql_query = ''
 
   if (search_for !== undefined && search_for !== null) {
-    sql_condition = `${search_for} LIKE "%${item}%"`
+
+    if (Array.isArray(search_for)) {
+
+      for (let i = 0; i < search_for.length; i++) {
+        sql_condition += ` ${req.body.search_condition[i]} ${search_for[i]} LIKE "%${item[i]}%" `
+        console.log(sql_condition)
+      }
+
+    } else {
+      sql_condition = `${search_for} LIKE "%${item}%"`
+    }
+
   } else {
     sql_condition = `title LIKE "%${item}%" OR author LIKE "%${item}%" OR category LIKE "%${item}%" OR series LIKE "%${item}%"`
   }
@@ -28,7 +37,7 @@ router.post('/find', (req, res) => {
     if (typeof rows !== 'undefined' && rows.length > 0) {
       res.render('books', { booksArr: rows })
     } else {
-      res.send("Brak rezultatów wyszukiwania.")
+      res.send(`Brak rezultatów wyszukiwania dla ${item}.`)
     }
   })
 

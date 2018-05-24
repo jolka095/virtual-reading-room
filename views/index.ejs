@@ -21,6 +21,7 @@
                         <h4 id="title">Zanurz się w swojej ulubionej ksiażce.</h4>
                         <br>
 
+                        <!-- Basic search -->
                         <form action="/find" method="POST" id="szukaj1">
                             <div class="input-group">
 
@@ -34,17 +35,17 @@
                                 </div>
                             </div>
 
-                            <span id="goToAdvancedSearch"> Zaawansowane wyszukiwanie </span>
+                            <br>
+                            <span id="goToAdvancedSearch">
+                                <i class="fas fa-angle-double-right"></i> Zaawansowane wyszukiwanie </span>
 
                         </form>
 
-
-
-                        
+                        <!-- Advanced search -->
                         <form action="/find" method="POST" id="szukaj1_advanced" style="display:none;">
                             <div class="input-group">
 
-                                <select name="search_for" class="form-control" id="search_for">
+                                <select name="search_for" class="form-control">
                                     <option value="title">tytuł</option>
                                     <option value="author">autor</option>
                                     <option value="category">kategoria</option>
@@ -54,18 +55,25 @@
                                 <input type="search" name="find_item" class="form-control" placeholder="Wpisz szukaną frazę" aria-label="Szukaj">
 
                                 <div class="input-group-addon">
+                                    <select name="search_condition" class="form-control btn search_condition" style="display:none;"><option value=""></option></select>
+
                                     <button class="btn btn-info" type="submit">
                                         <i class="fas fa-search"></i> Szukaj
                                     </button>
                                 </div>
-
                             </div>
-                            <span id="goToSimpleSearch"> Proste wyszukiwanie </span>
+
+                            <br>
+                            <span id="addNextSearchTag">
+                                <i class="fas fa-plus"></i> Dodaj kolejną frazę </span>
+                            <br>
+                            <span id="goToSimpleSearch">
+                                <i class="fas fa-angle-right"></i> Proste wyszukiwanie </span>
                         </form>
 
 
-
                     </div>
+
                     <div class="col-md-4 text-center">
                         <form action="/register" method="POST">
                             <h6> Dołącz do nas już teraz i wypróbuj serwis bezpłatnie przez 14 dni. </h6>
