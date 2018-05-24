@@ -57,9 +57,10 @@ router.post('/find', (req, res) => {
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  const queryStatement = `SELECT * FROM categories; `;
 
-  db.query(queryStatement, (error, result) => {
+  const queryStatement = `SELECT * FROM book_info ORDER BY avg_mark DESC LIMIT 4;`;
+
+    db.query(queryStatement, (error, result) => {
 
     if (result === null || result === undefined || result.length === 0) {
 
@@ -68,9 +69,10 @@ router.get('/', function (req, res, next) {
     } 
     else {
     // console.log(JSON.stringify(result, null, 2))
-    res.render('index', { categoriesArr: result })
-  }
-})
+    res.render('index', { booksArr: result })
+    }
+    
+  })
 });
 
 module.exports = router;
