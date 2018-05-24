@@ -4,7 +4,9 @@
 <head>
     <%- include('header.ejs') %>
 </head>
-
+<script>
+    
+</script>
 <body>
     <%- include('navbar.ejs') %>
 
@@ -15,140 +17,114 @@
 
                     <div class="col-md-4 ">
                         <img class="img-fluid mx-auto d-block" src="/<%= book.image %>" alt="book cover">
+                        <div class="dropdown text-center">
+                            <button class="btn dropdown-toggle" type="button" data-toggle="dropdown"> Dodaj do biblioteczki
+                                           
+                                <ul class="dropdown-menu">
+                                     <li><i class="fa fa-check-circle"> Przeczytane</i></li>
+                                    <li> <i class="fa fa-plus-circle"> Chcę przeczytać</i></li>
+                                </ul>
+                        </div>
+                          <!-- <div class="btn-group" role="group"> -->
+                                
                     </div>
 
-
-                    <div id="book_info" class="col-md-8">
-                        <div class="table-responsive-sm ">
-                            <table class="table">
-                                <tbody>
-                                    <tr class="table-active">
-                                        <th>Tytuł</th>
-                                        <td>
-                                            <strong>
-                                                <i>
-                                                    <%= book.title %>
-                                                </i>
-                                            </strong>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>Autor</th>
-                                        <td>
-                                            <!-- redirect to all books from this author -->
-                                            <a href="/books/authors/<%= book.author_id %>">
-                                                <%= book.author %>
-                                            </a>
-
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>Data wydania</th>
-                                        <td>
-                                         <%= book.publish_date %>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>Wydawnictwo</th>
-                                        <td>
-                                            <%= book.publisher %>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>ID</th>
-                                        <td>
-                                            <%= book.ISBN %>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>Kategoria</th>
-                                        <td>
-                                            <!-- redirect to all books from this category -->
-                                            <a href="/books/category/<%= book.category_id %>">
-                                                <!-- <span class="badge badge-dark"> -->
-                                                <%= book.category %>
-                                                    <!-- </span> -->
-                                            </a>
-
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>Dostępny język</th>
-                                        <td>
-                                            <%= book.language %>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>Oryginalny tytuł</th>
-                                        <td>
-                                            <%= book.original_title %>
-                                        </td>
-                                    </tr>
-                                    <%if (book.series !== undefined && book.series !== null) { %>
-                                        <tr>
-                                            <th>Seria</th>
-                                            <td>
-                                                <!-- redirect to all books from this category -->
-                                                <a href="/books/series/<%= book.series_id %>">
-                                                    <!-- <span class="badge badge-dark"> -->
-                                                    <%= book.series %>
-                                                        <!-- </span> -->
-                                                </a>
-
-                                            </td>
-                                        </tr>
-                                        <% } %>
-                                            <tr>
-                                                <th>Ocena</th>
-                                                <td>
-                                                    <div class="rating">
-                                                        <i aria-hidden="true" class="fa fa-star"></i>
-                                                        <i aria-hidden="true" class="fa fa-star"></i>
-                                                        <i aria-hidden="true" class="fa fa-star"></i>
-                                                        <i aria-hidden="true" class="fa fa-star"></i>
-                                                        <i aria-hidden="true" class="fa fa-star"></i>
-                                                        <strong>
-                                                            <%= book.avg_mark %>
-                                                        </strong>
-                                                        <p>
-                                                            <i class="fa fa-user" aria-hidden="true"></i>
-                                                            <%= book.total_marks_num %> ocen </p>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                </tbody>
-                            </table>
+                    
+                    <div id="book_info" class="col-md-8 text-left card ">
+                        <div class="title"><strong><i> <%= book.title %> </i> </strong></div>
+                        <div class="author"> <br>autorstwa<a href="/books/authors/<%= book.author_id %>"> <%= book.author %> </a> </div>
+                        <div class="series"> <%if (book.series !== undefined && book.series !== null) { %>
+                            Seria: <a href="/books/series/<%= book.series_id %>"> <%= book.series %> </a> tom <%= book.vol_in_series %><br><br>
+                            <% } %> 
+                        </div>
+                        <div class="category">  Z kategorii: <a href="/books/category/<%= book.category_id %>">
+                                <%= book.category %> </a> 
                         </div>
 
-
-                        <!-- <div class="btn-group" role="group"> -->
-                        <a class="btn btn-secondary" href="#" role="button">
-                            <i class="fas fa-check-circle"></i> Przeczytane</a>
-                        <a class="btn btn-info" href="#" role="button">
-                            <i class="fas fa-chevron-circle-right"></i> Czytam</a>
-                        <a class="btn btn-success" href="#" role="button">
-                            <i class="fas fa-plus-circle"></i> Chcę przeczytać</a>
-                        <!-- </div>  -->
+                         <div class="language">   Dostępna w języku: <%= book.language %></a><br><br></div>
+                        <div class="rating inline-block">
+                                <%if (Math.round(book.avg_mark) == 0) { %>
+                                <i aria-hidden="true" class="fa fa-star-o"></i>
+                                <i aria-hidden="true" class="fa fa-star-o"></i>
+                                <i aria-hidden="true" class="fa fa-star-o"></i>
+                                <i aria-hidden="true" class="fa fa-star-o"></i>
+                                <i aria-hidden="true" class="fa fa-star-o"></i>
+                                <% } else if (Math.round(book.avg_mark) == 1) { %>
+                                <i aria-hidden="true" class="fa fa-star"></i>
+                                <i aria-hidden="true" class="fa fa-star-o"></i>
+                                <i aria-hidden="true" class="fa fa-star-o"></i>
+                                <i aria-hidden="true" class="fa fa-star-o"></i>
+                                <i aria-hidden="true" class="fa fa-star-o"></i>
+                                <% } else if (Math.round(book.avg_mark) == 2) { %>
+                                <i aria-hidden="true" class="fa fa-star"></i>
+                                <i aria-hidden="true" class="fa fa-star"></i>
+                                <i aria-hidden="true" class="fa fa-star-o"></i>
+                                <i aria-hidden="true" class="fa fa-star-o"></i>
+                                <i aria-hidden="true" class="fa fa-star-o"></i>
+                                <% } else if (Math.round(book.avg_mark) == 3) { %>
+                                <i aria-hidden="true" class="fa fa-star"></i>
+                                <i aria-hidden="true" class="fa fa-star"></i>
+                                <i aria-hidden="true" class="fa fa-star"></i>
+                                <i aria-hidden="true" class="fa fa-star-o"></i>
+                                <i aria-hidden="true" class="fa fa-star-o"></i>
+                                <% } else if (Math.round(book.avg_mark) == 4) { %>
+                                <i aria-hidden="true" class="fa fa-star"></i>
+                                <i aria-hidden="true" class="fa fa-star"></i>
+                                <i aria-hidden="true" class="fa fa-star"></i>
+                                <i aria-hidden="true" class="fa fa-star"></i>
+                                <i aria-hidden="true" class="fa fa-star-o"></i>
+                                <% } else if (Math.round(book.avg_mark) == 5) { %>
+                                <i aria-hidden="true" class="fa fa-star"></i>
+                                <i aria-hidden="true" class="fa fa-star"></i>
+                                <i aria-hidden="true" class="fa fa-star"></i>
+                                <i aria-hidden="true" class="fa fa-star"></i>
+                                <i aria-hidden="true" class="fa fa-star"></i>
+                                <% } %> 
+                                <strong>
+                                    <%= book.avg_mark %>/5
+                                </strong>
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                                    <%= book.total_marks_num %> ocen
+                                    <div class="dropdown inline-form">
+                                        <button class="btn dropdown-toggle" type="button" data-toggle="dropdown"> Oceń książkę
+                                        
+                                        <ul class="dropdown-menu">
+                                            <li><a href="#">Zła (0)</a></li>
+                                            <li><a href="#">Słaba (1)</a></li>
+                                            <li><a href="#">Może być (2)</a></li>
+                                            <li><a href="#">Przeciętna(3)</a></li>
+                                            <li><a href="#">Dobra(4)</a></li>
+                                            <li><a href="#">Bardzo dobra(5)</a></li>
+                                        </ul>
+                                    </div>
+                        </div>
+                        <div class="synopsis text-justify">
+                               <%= book.synopsis %>
+                        </div>
+                        <hr>
+                    
+                    
+                        
+                        <div class="details">
+                                <button class="btn btn-outline-info" type="button" data-toggle="collapse" data-target="#footwear" aria-expanded="false" aria-controls="footwear">
+                                    <strong> Więcej szczegółów </strong>
+                                </button>
+            
+                                <p class="text-justify collapse" id="footwear">
+                                        Wydano <%= (book.publish_date).getDate(); %>.<%if ((book.publish_date).getMonth() + 1 < 10) { %>0<% } %><%= 1+(book.publish_date).getMonth(); %>.<%= (book.publish_date).getFullYear(); %> przez <%= book.publisher %>.
+                                        <br> Numer referncyjny: <%= book.ISBN %>.
+                                        <br>Tytuł oryginalny: <%= book.original_title %>.
+                                </p>
+                           
+                        </div>                                      
+                 
                     </div>
 
+
+                      
                 </div>
-                <!-- row end -->
 
-                <br>
-
-                <div class="row">
-                    <div class="col-md-12">
-                        <button class="btn btn-light" type="button" data-toggle="collapse" data-target="#footwear" aria-expanded="false" aria-controls="footwear">
-                            <strong> Opis książki </strong>
-                        </button>
-
-                        <p class="text-justify collapse" id="footwear">
-                            <%= book.synopsis %>
-                        </p>
-
-                    </div>
-
-                </div>
+                               <br>
 
             </div>
 
