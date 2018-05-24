@@ -1,25 +1,25 @@
 var express = require('express');
 var router = express.Router();
+const db = require('../db');
 
-router.get('/', function(req, res, next) {
-  res.render('user-profile', {  });
-});
+// router.get('/', function(req, res, next) {
+//   res.render('user-profile', {  });
+// });
 
-router.get('/user-profile', function (req, res, next) {
+router.get('/', function (req, res, next) {
 
-    const queryStatement = `SELECT username FROM users WHERE email = ${req.body.email}; `;
+    const queryUser = `SELECT * FROM users WHERE email = "anna.pol@wp.pl"; `;
 
-    db.query(queryStatement, (error, result) => {
+    db.query(queryUser, (error, result) => {
 
-        if (result === null || result === undefined || result.length === 0) {
-
-            res.send("Nie znaleziono książek z takiej kategorii w bazie")
-            // res.render('resource_not_found', { message: message })
+        if (result === null || result === undefined) {
+            res.send("Nie znaleziono takiego użytkownika")
         }
         else {
-            res.render('user-profile', { userData: result })
+            res.render('user-profile', { userData: result[0] })
         }
-    })
+    });
+
 });
 
 
