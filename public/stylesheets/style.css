@@ -6,11 +6,22 @@ body {
   background-image: url('/images/swirl.png');
 }
 
-nav .nav-link {
+nav .navbar-brand{
   font-family: 'Cherry Swash', sans-serif;
   font-size: 22px;
   color: black;
 }
+
+nav .nav-link{
+  font-size: 16px;
+  color: black;
+}
+
+nav .nav-link:hover {
+  border-bottom: 1px solid #E0E0E0;
+  
+}
+
 
 nav input[type="text"],
 input::-webkit-input-placeholder {

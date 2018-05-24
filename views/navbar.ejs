@@ -1,55 +1,39 @@
 <nav class="navbar bg-white d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3  border-bottom box-shadow">
 
-    <h5 class="my-0 mr-md-auto font-weight-normal">
-        <a class="nav-link" href="/">
-            <img  class="mx-auto d-block" src="/images/logo_only.png" alt="Logo" width="100"></a>
+    <h5 class="my-0 mr-md-auto font-weight-normal form-inline">
+        <a class="navbar-brand" class="form-inline" href="/">
+            <img  src="/images/logo_only.png" alt="Logo" width="80"></a>
+        <a class="nav-link" href="/books">Katalog</a>
+        <a class="nav-link" href="/library">Moja Biblioteczka</a>
     </h5>
 
-    <!-- <form action="/find" method="POST" class="form-inline">
-        <input class="form-control" type="search" placeholder="Wpisz tytuł lub autora" aria-label="Szukaj">
-        <button class="btn btn-primary" type="submit">
-            <i class="fas fa-search"></i> Szukaj
-        </button>
-    </form> -->
 
+    <nav class="my-2 my-md-0 mr-md-3">
+        
     <form action="/find" method="POST">
         <div class="input-group">
           <input type="search" name="find_item" class="form-control input-sm" placeholder="tytuł/autor/kategoria/seria" aria-label="Szukaj">
           <div class="input-group-addon">
-            <button class="btn btn-primary btn-sm" type="submit">
+            <button class="btn btn-info btn-sm" type="submit">
               <i class="fas fa-search"></i>
             </button>
           </div>
-      </form>
-
-    <nav class="my-2 my-md-0 mr-md-3">
-
-
-       
-
-        <!-- jesli user zalogowany -->
+    </form>
+    
         <div class="btn-group">
-            <button type="button" class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button type="button" class="btn btn-outline-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fa fa-user"></i> Mój profil
             </button>
 
             <div class="dropdown-menu">
                 <a class="dropdown-item" href="/user-profile">Mój profil</a>
-                <a class="dropdown-item" href="/library">Biblioteczka</a>
+                <a class="dropdown-item" href="/">Płatności</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="/logout">
                     <i class="fas fa-sign-out-alt"></i> Wyloguj
                 </a>
-        </div>
-
+             </div>
         </div>
 
     </nav>
-   <!-- jesli user NIE zalogowany 
-   <div class="btn-group" role="group">
-       <a class="btn btn-primary" href="/login" role="button">Logowanie</a>
-       <a class="btn btn-outline-primary" href="/register" role="button">Rejestracja</a>
-    </div>
-    -->
-
 </nav>
