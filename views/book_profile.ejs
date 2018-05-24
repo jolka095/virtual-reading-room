@@ -18,106 +18,47 @@
                     </div>
 
 
-                    <div id="book_info" class="col-md-8">
-                        <div class="table-responsive-sm ">
-                            <table class="table">
-                                <tbody>
-                                    <tr class="table-active">
-                                        <th>Tytuł</th>
-                                        <td>
-                                            <strong>
-                                                <i>
-                                                    <%= book.title %>
-                                                </i>
-                                            </strong>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>Autor</th>
-                                        <td>
-                                            <!-- redirect to all books from this author -->
-                                            <a href="/books/authors/<%= book.author_id %>">
-                                                <%= book.author %>
-                                            </a>
+                    <div id="book_info" class="col-md-8 text-left">
+                        <div class="title"><strong><i> <%= book.title %> </i> </strong></div>
+                        <div class="author"> <br>autorstwa<a href="/books/authors/<%= book.author_id %>"> <%= book.author %> </a> </div>
+                      
+                       <div class="series"> <%if (book.series !== undefined && book.series !== null) { %>
+                            Seria: <a href="/books/series/<%= book.series_id %>"> <%= book.series %> </a>
+                            <% } %>
+                        </div>
+                        <div class="category"> Z kategorii: <a href="/books/category/<%= book.category_id %>">
+                            <%= book.category %> </a>
+                        </div>
+                        <div class="language"> Dostępna w języku: <%= book.language %></a>
+                        </div>
+                       
+                         <div class="rating">
+                            <i aria-hidden="true" class="fa fa-star"></i>
+                            <i aria-hidden="true" class="fa fa-star"></i>
+                            <i aria-hidden="true" class="fa fa-star"></i>
+                            <i aria-hidden="true" class="fa fa-star"></i>
+                            <i aria-hidden="true" class="fa fa-star"></i>
+                            <strong>
+                                <%= book.avg_mark %>
+                            </strong>
+                            <p>
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                                <%= book.total_marks_num %> ocen </p>
+                        </div>
 
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>Data wydania</th>
-                                        <td>
-                                         <%= book.publish_date %>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>Wydawnictwo</th>
-                                        <td>
-                                            <%= book.publisher %>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>ID</th>
-                                        <td>
+                        Wydano <%= book.publish_date %> przez <%= book.publisher %>.
+                                      
+                                     
                                             <%= book.ISBN %>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>Kategoria</th>
-                                        <td>
-                                            <!-- redirect to all books from this category -->
-                                            <a href="/books/category/<%= book.category_id %>">
-                                                <!-- <span class="badge badge-dark"> -->
-                                                <%= book.category %>
-                                                    <!-- </span> -->
-                                            </a>
+                                    
+                                        
+                                            
 
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>Dostępny język</th>
-                                        <td>
-                                            <%= book.language %>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>Oryginalny tytuł</th>
-                                        <td>
+                                            
+                                      
                                             <%= book.original_title %>
-                                        </td>
-                                    </tr>
-                                    <%if (book.series !== undefined && book.series !== null) { %>
-                                        <tr>
-                                            <th>Seria</th>
-                                            <td>
-                                                <!-- redirect to all books from this category -->
-                                                <a href="/books/series/<%= book.series_id %>">
-                                                    <!-- <span class="badge badge-dark"> -->
-                                                    <%= book.series %>
-                                                        <!-- </span> -->
-                                                </a>
-
-                                            </td>
-                                        </tr>
-                                        <% } %>
-                                            <tr>
-                                                <th>Ocena</th>
-                                                <td>
-                                                    <div class="rating">
-                                                        <i aria-hidden="true" class="fa fa-star"></i>
-                                                        <i aria-hidden="true" class="fa fa-star"></i>
-                                                        <i aria-hidden="true" class="fa fa-star"></i>
-                                                        <i aria-hidden="true" class="fa fa-star"></i>
-                                                        <i aria-hidden="true" class="fa fa-star"></i>
-                                                        <strong>
-                                                            <%= book.avg_mark %>
-                                                        </strong>
-                                                        <p>
-                                                            <i class="fa fa-user" aria-hidden="true"></i>
-                                                            <%= book.total_marks_num %> ocen </p>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                </tbody>
-                            </table>
+                                      
+                 
                         </div>
 
 

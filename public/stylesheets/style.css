@@ -47,6 +47,10 @@ main .col-md-6 {
   width: 80%;
 }
 
+#szukaj {
+  padding-right: 5%;
+}
+
 #goToSimpleSearch:hover, #goToAdvancedSearch:hover {
   font-weight: bold;
   cursor: pointer;
