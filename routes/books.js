@@ -79,7 +79,7 @@ router.get('/category/:category_id', function (req, res, next) {
 
 router.get('/authors/:author_id', function (req, res, next) {
 
-  const queryStatement = `SELECT * FROM book_info WHERE author_id = ${req.params.author_id}; `;
+  const queryStatement = `SELECT * FROM book_info WHERE author_id = ${req.params.author_id} order by author_id, vol_in_series; `;
 
   db.query(queryStatement, (error, result) => {
 
@@ -95,7 +95,7 @@ router.get('/authors/:author_id', function (req, res, next) {
 
 router.get('/series/:series_id', function (req, res, next) {
 
-  const queryStatement = `SELECT * FROM book_info WHERE series_id = ${req.params.series_id}; `;
+  const queryStatement = `SELECT * FROM book_info WHERE series_id = ${req.params.series_id} ORDER BY vol_in_series; `;
 
   db.query(queryStatement, (error, result) => {
 

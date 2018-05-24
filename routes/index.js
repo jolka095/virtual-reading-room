@@ -2,57 +2,36 @@ var express = require('express');
 var router = express.Router();
 const db = require('../db');
 
-// finding books version 1
+// finding books version 2
 router.post('/find', (req, res) => {
+
+  console.log("req.body:")
+  console.log(JSON.stringify(req.body, null, 2))
 
   let id = 0;
   let item = req.body.find_item;
+  let search_for = req.body.search_for;
 
-  db.query(`SELECT book_id FROM book_info WHERE title="${item}"`, function (err, rows, fields) {
+  let sql_condition = ''
+  let sql_query = ''
 
+  if (search_for !== undefined && search_for !== null) {
+    sql_condition = `${search_for} LIKE "%${item}%"`
+  } else {
+    sql_condition = `title LIKE "%${item}%" OR author LIKE "%${item}%" OR category LIKE "%${item}%" OR series LIKE "%${item}%"`
+  }
+
+  sql_query = `SELECT * FROM book_info WHERE ${sql_condition} ORDER BY author_id, vol_in_series;`
+  console.log(sql_query)
+
+  db.query(sql_query, function (err, rows, fields) {
     if (typeof rows !== 'undefined' && rows.length > 0) {
-      id = rows[0].book_id;
-      // console.log('id : ', id)
-      res.redirect(`/books/${id}`);
-    }
-    else {
-      console.log("\nSzukam dalej po autorze...");
-      db.query(`SELECT author_id FROM book_info WHERE author="${item}"`, function (err, rows, fields) {
-
-        if (typeof rows !== 'undefined' && rows.length > 0) {
-          id = rows[0].author_id;
-          // console.log('id : ', id)
-          res.redirect(`/books/authors/${id}`);
-        }
-        else {
-          console.log("\nSzukam dalej po kategorii...");
-          db.query(`SELECT category_id FROM book_info WHERE category="${item}"`, function (err, rows, fields) {
-
-            if (typeof rows !== 'undefined' && rows.length > 0) {
-              id = rows[0].category_id;
-              // console.log('id : ', id)
-              res.redirect(`/books/category/${id}`);
-            }
-             else {
-              console.log("\nSzukam dalej po serii...");
-              db.query(`SELECT series_id FROM book_info WHERE series="${item}"`, function (err, rows, fields) {
-
-                if (typeof rows !== 'undefined' && rows.length > 0) {
-                  id = rows[0].series_id;
-                  // console.log('id : ', id)
-                  res.redirect(`/books/series/${id}`);
-                }
-                else {
-                  console.log("\nBrak wyników...");
-                  res.send(`Brak wyników dla frazy ${item}`);
-                }
-              })
-             }
-          })
-        }
-      })
+      res.render('books', { booksArr: rows })
+    } else {
+      res.send("Brak rezultatów wyszukiwania.")
     }
   })
+
 })
 
 /* GET home page. */
@@ -60,18 +39,18 @@ router.get('/', function (req, res, next) {
 
   const queryStatement = `SELECT * FROM book_info ORDER BY avg_mark DESC LIMIT 4;`;
 
-    db.query(queryStatement, (error, result) => {
+  db.query(queryStatement, (error, result) => {
 
     if (result === null || result === undefined || result.length === 0) {
 
       res.send("Nie znaleziono żadnych kategorii w bazie")
 
-    } 
-    else {
-    // console.log(JSON.stringify(result, null, 2))
-    res.render('index', { booksArr: result })
     }
-    
+    else {
+      // console.log(JSON.stringify(result, null, 2))
+      res.render('index', { booksArr: result })
+    }
+
   })
 });
 

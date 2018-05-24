@@ -32,8 +32,13 @@ main .col-md-6 {
 
 }
 
-#szukaj1 {
+#szukaj1, #szukaj1_advanced {
   width: 80%;
+}
+
+#goToSimpleSearch:hover, #goToAdvancedSearch:hover {
+  font-weight: bold;
+  cursor: pointer;
 }
 
 .jumbotron {
