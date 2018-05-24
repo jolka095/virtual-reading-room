@@ -83,6 +83,27 @@ main .col-md-6 {
   font-family: 'Cherry Swash', sans-serif;
 }
 
+.book_container .title {
+  font-size: 40px;
+  width: 100%;
+}
+.book_container .author {
+  font-size: 22px;
+  width: 100%;
+  margin: 1% 0 6% 0;
+}
+.book_container .series, .book_container .category, .book_container .language, .book_container .rating {
+  font-size: 18px;
+  width: 100%;
+  margin: 1% 2% 0% 0;
+}
+.book_container .synopsis{
+  margin: 10% 0 5% 0;
+}
+
+.fa-user {
+  padding-left: 5%;
+}
 #info{
   margin-top: 2%;
 
@@ -119,6 +140,7 @@ main {
 .book_container {
   font-family: 'David Libre', serif;
   font-size: 18px;
+  margin: 5% auto 5% auto;
  }
 
 .badge {
