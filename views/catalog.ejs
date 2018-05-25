@@ -8,28 +8,30 @@
 <body>
   <%- include('navbar.ejs') %>
 
-    <div class="container text-left">
+    <div class="container text-center">
 
       <h2>Katalog</h2>
       <hr>
       <div class="row">
-        <div class="col-md-2 text-center">
+        <div class="col-md-3 text-center">
+
+            Szukaj po kategoriach: <br> <br>
             <%if (catArr !== undefined && catArr !== null) { %>
 
             <ul class="list-group">
                 <% catArr.forEach( (cat) => { %>
               
-                  <li class="list-group-item"> <a href="<%= '/categories/'+ cat.idcategories %>"> <%= cat.name %> </a></li>
+                  <li class="list-group-item"> <a href="<%= 'books/category/'+ cat.idcategories %>"> <%= cat.name %> </a></li>
                 <% }) %>
             </ul>
             <% } %>
 
         </div>
-        <div class="col-md-10">
+        <div class="col-md-9" id="search">
           <form action="/find" method="POST" id="szukaj1">
             <div class="input-group">
 
-                <input type="search" name="find_item" class="form-control" placeholder="Wpisz tytuł, autora, kategorię lub serię" aria-label="Szukaj">
+                <input type="search" name="find_item" class="form-control" placeholder="Co mogę dla Ciebie znaleźć?" aria-label="Szukaj">
 
                 <div class="input-group-addon">
 
@@ -74,17 +76,19 @@
               <span id="goToSimpleSearch">
                   <i class="fa fa-angle-right"></i> Proste wyszukiwanie </span>
           </form>
-          
         </div>
+    </div>
 
-      <%if (booksArr !== undefined && booksArr !== null) { %>
+    <%if (booksArr !== undefined && booksArr !== null) { %>
+        <hr>
+        <h3 > Najwyżej oceniane:</h3>
         <div id="books_container">
 
           <div class="card-deck-wrapper">
             <div class="card-deck">
               <% booksArr.forEach( (book) => { %>
 
-                <div class="card">
+                <div class="card text-center">
                   <br>
                   <img class="card-img-top img-fluid mx-auto d-block" src="/<%= book.image %>" alt="<%= book.title + " " + ' image' %>" >
                   <div class="card-body d-flex flex-column">
@@ -101,6 +105,7 @@
         </div>
 
         <% } %>
+    </div>
     </div>
 
     <%- include('footer.ejs') %>

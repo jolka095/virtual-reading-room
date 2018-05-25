@@ -112,7 +112,7 @@ router.get('/series/:series_id', function (req, res, next) {
 
 router.get('/', function (req, res, next) {
 
-  const queryStatement = `SELECT * FROM book_info; `;
+  const queryStatement = `SELECT * FROM book_info LIMIT 4; `;
   const queryStatement2 = `SELECT * FROM categories; `;
 
   db.query(queryStatement, (error, result) => {

@@ -134,6 +134,11 @@ main {
 
 }
 
+#search {
+  padding-top: 10%;
+  padding-left: 10%;
+}
+
 /* div.container-fluid {
   background-image: url('/images/b.jpeg');
   background-attachment: fixed;

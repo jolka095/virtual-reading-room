@@ -31,7 +31,7 @@ $(document).ready( () => {
             <input type="search" name="find_item" class="form-control" placeholder="Wpisz szukaną frazę" aria-label="Szukaj">
 
             <span class="btn btn-info removeSearchCondition" >
-                <i class="fas fa-trash-alt"></i>
+                <i class="fa fa-close"></i>
             </span>
 
             <select name="search_condition" class="form-control btn search_condition">
