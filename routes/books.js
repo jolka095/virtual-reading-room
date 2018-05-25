@@ -113,6 +113,7 @@ router.get('/series/:series_id', function (req, res, next) {
 router.get('/', function (req, res, next) {
 
   const queryStatement = `SELECT * FROM book_info; `;
+  const queryStatement2 = `SELECT * FROM categories; `;
 
   db.query(queryStatement, (error, result) => {
 
@@ -120,12 +121,20 @@ router.get('/', function (req, res, next) {
 
       res.send("Nie znaleziono książek w bazie")
 
-    } else {
-      // console.log(JSON.stringify(result, null, 2))
-      res.render('books', { booksArr: result })
+    }  else {
+      
+      db.query(queryStatement2, (error, result2) => {
+        if (result2 === null || result2 === undefined || result2.length === 0) {
+
+        res.send("Nie znaleziono kategorii w bazie")
+
+        } else {
+          // console.log(JSON.stringify(result, null, 2))
+          res.render('books', { booksArr: result, catArr: result2})
+        }
+      })
     }
   })
-});
-
+})
 
 module.exports = router;

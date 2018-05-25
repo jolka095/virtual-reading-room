@@ -18,6 +18,7 @@ var policy = require('./routes/policy');
 var userProfile = require('./routes/user-profile');
 var series = require('./routes/series');
 var logout = require('./routes/logout');
+var katalog = require('./routes/catalog');
 
 var app = express();
 const db = require('./db');
@@ -49,6 +50,7 @@ app.use('/policy', policy);
 app.use('/user-profile', userProfile);
 app.use('/series', series);
 app.use('/logout', logout);
+app.use('/catalog', katalog);
 
 // page not found
 app.get('*', function(req, res){
@@ -70,5 +72,6 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
 
 module.exports = app;

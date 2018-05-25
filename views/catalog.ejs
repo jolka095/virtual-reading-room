@@ -13,7 +13,19 @@
       <h2>Katalog</h2>
       <hr>
       <div class="row">
-          <div class="col-md-10">
+        <div class="col-md-2 text-center">
+            <%if (catArr !== undefined && catArr !== null) { %>
+
+            <ul class="list-group">
+                <% catArr.forEach( (cat) => { %>
+              
+                  <li class="list-group-item"> <a href="<%= '/categories/'+ cat.idcategories %>"> <%= cat.name %> </a></li>
+                <% }) %>
+            </ul>
+            <% } %>
+
+        </div>
+        <div class="col-md-10">
           <form action="/find" method="POST" id="szukaj1">
             <div class="input-group">
 
