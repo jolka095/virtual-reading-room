@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+const auth = require('../authentication/middleware');
 const db = require('../db');
 
 // finding books version 2
@@ -56,6 +57,12 @@ router.get('/', function (req, res, next) {
 
     }
     else {
+
+      if (req.user) {
+        console.log("\nZALOGOWANY\n")
+      } else {
+        console.log("\n----> NIEZALOGOWANY\n")
+      }
       // console.log(JSON.stringify(result, null, 2))
       res.render('index', { booksArr: result })
     }
