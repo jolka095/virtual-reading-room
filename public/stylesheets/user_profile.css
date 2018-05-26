@@ -1,0 +1,59 @@
+@import url(https://fonts.googleapis.com/css?family=Crimson+Text:400,700,900,400italic,700italic,900italic|Playfair+Display:400,700,900,400italic,700italic,900italic|Rock+Salt:400);
+
+.user_profile {
+    border: 12px solid;
+    border-color: #8B4513;
+    border-radius: 4px;
+    position: relative;
+}
+
+.user_profile .user {
+    font-size: 22px;
+    width: 100%;
+    margin: 1% 0 6% 0;
+}
+
+.open_book {
+    background: #fff;
+    box-shadow: rgba(0,0,0,0.5) 0 1em 4em;
+    color: #000;
+    position: relative;
+}
+
+.open_book:after {
+    background: linear-gradient(to right, transparent 0%,rgba(0,0,0,0.2) 46%,rgba(0,0,0,0.5) 49%,rgba(0,0,0,0.6) 50%,rgba(0,0,0,0.5) 51%,rgba(0,0,0,0.2) 52%,transparent 100%);
+    bottom: -0.5em;
+    content: '';
+    left: 50%;
+    position: absolute;
+    top: -0.5em;
+    transform: translate(-50%,0);
+    width: 3em;
+    z-index: 1;
+}
+
+.book_header {
+    padding-bottom: 1rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    padding-top: 0.5rem;
+}
+
+.book_header *,
+.book_footer * {
+    font: 700 1em/1.25 'Playfair Display', sans-serif;
+    letter-spacing: 0.125em;
+    margin: 0;
+}
+
+.book_header * {
+    font-size: 0.75em;
+    text-transform: uppercase;
+}
+
+.book_footer {
+    padding-top: 3em;
+    padding-bottom: 0.5rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
