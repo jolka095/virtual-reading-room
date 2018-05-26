@@ -151,6 +151,10 @@ main {
   margin: 5% auto 5% auto;
  }
 
+ .card {
+   margin-bottom: 2%;
+ }
+
 .badge {
   font-family: 'Jura', sans-serif;
   font-size: 90% !important;
@@ -178,7 +182,7 @@ footer {
 }
 
 #books_container {
-  margin-bottom: 5%;
+  margin-bottom: 15%;
 }
 
 #books_container img {
@@ -191,6 +195,7 @@ footer {
 #books_container .card {
   min-width: 200px;
   max-width: 250px;
+  margin-bottom: 2%;
 }
 
 #no_results {
