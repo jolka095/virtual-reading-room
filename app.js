@@ -24,6 +24,7 @@ var logout = require('./routes/logout');
 var katalog = require('./routes/catalog');
 var categories = require('./routes/categories');
 var authors = require('./routes/authors');
+var languages = require('./routes/languages');
 var recommendations = require('./routes/recommendations');
 
 var app = express();
@@ -73,6 +74,7 @@ app.use('/logout', logout);
 app.use('/catalog', katalog);
 app.use('/categories', categories);
 app.use('/authors', authors);
+app.use('/languages', languages);
 app.use('/recommendations', recommendations);
 
 // page not found

@@ -9,7 +9,7 @@ router.get('/:book_id', function (req, res, next) {
 
 router.get('/', function (req, res, next) {
 
-    const queryStatement = `SELECT * FROM book_info ORDER BY avg_mark DESC LIMIT 4; `;
+    const queryStatement = `SELECT * FROM book_info; `;
     const queryStatement2 = `SELECT * FROM categories; `;
   
     db.query(queryStatement, (error, result) => {
