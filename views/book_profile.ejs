@@ -33,7 +33,7 @@
                         </div>
 
                         <div class="author"> <br>autorstwa 
-                            <a href="/books/authors/<%= book.author_id %>">
+                            <a href="/authors/<%= book.author_id %>/<%= book.author %>">
                                 <%= book.author %>
                             </a>
                         </div>
@@ -41,7 +41,7 @@
                         <div class="series">
                             <%if (book.series !== undefined && book.series !== null) { %>
                                 Seria:
-                                <a href="/books/series/<%= book.series_id %>">
+                                <a href="/series/<%= book.series_id %>/<%= book.series %>">
                                     <%= book.series %>
                                 </a> tom
                                 <%= book.vol_in_series %>
@@ -51,7 +51,7 @@
                         </div>
 
                         <div class="category"> Z kategorii:
-                            <a href="/books/category/<%= book.category_id %>">
+                            <a href="/categories/<%= book.category_id %>/<%= book.category %>">
                                 <%= book.category %>
                             </a>
                         </div>
