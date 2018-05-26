@@ -3,9 +3,11 @@ var router = express.Router();
 const auth = require('../authentication/middleware');
 const db = require('../db');
 
-// finding books version 2
+// finding books version edvanced 3
 router.post('/find', (req, res) => {
   console.log(JSON.stringify(req.body, null, 2));
+
+  let id = 0;
 
   let item = req.body.find_item;
   let search_for = req.body.search_for;
@@ -34,15 +36,60 @@ router.post('/find', (req, res) => {
   sql_query = `SELECT * FROM book_info WHERE ${sql_condition} ORDER BY author_id, vol_in_series;`;
   console.log(sql_query);
 
-  db.query(sql_query, function (err, rows, fields) {
+  db.query(`SELECT book_id FROM book_info WHERE title="${item}"`, function (err, rows, fields) {
+
     if (typeof rows !== 'undefined' && rows.length > 0) {
-      res.render('books', { booksArr: rows })
-    } else {
-      res.send(`Brak rezultatów wyszukiwania dla ${item}.`)
+      id = rows[0].book_id;
+      // console.log('id : ', id)
+      res.redirect(`/book_profile/${id}`);
+    }
+    else {
+      console.log("\nSzukam dalej po autorze...");
+      db.query(`SELECT author_id FROM book_info WHERE author="${item}"`, function (err, rows, fields) {
+
+        if (typeof rows !== 'undefined' && rows.length > 0) {
+          id = rows[0].author_id;
+          // console.log('id : ', id)
+          res.redirect(`/authors/${id}/${item}`);
+        }
+        else {
+          console.log("\nSzukam dalej po kategorii...");
+          db.query(`SELECT category_id FROM book_info WHERE category="${item}"`, function (err, rows, fields) {
+
+            if (typeof rows !== 'undefined' && rows.length > 0) {
+              id = rows[0].category_id;
+              // console.log('id : ', id)
+              res.redirect(`/categories/${id}/${item}`);
+            }
+             else {
+              console.log("\nSzukam dalej po serii...");
+              db.query(`SELECT series_id FROM book_info WHERE series="${item}"`, function (err, rows, fields) {
+
+                if (typeof rows !== 'undefined' && rows.length > 0) {
+                  id = rows[0].series_id;
+                  // console.log('id : ', id)
+                  res.redirect(`/series/${id}/${item}`);
+                }
+                else {
+                  db.query(sql_query, function (err, rows, fields) {
+                    if (typeof rows !== 'undefined' && rows.length > 0) {
+                      res.render(`results`, { booksArr: rows, what: item})
+                    } 
+                    else {
+                      console.log("\nBrak wyników...");
+                      res.redirect(`/no_results/${item}`);
+                    }
+                  })
+                }
+              })
+             }
+          })
+        }
+      })
     }
   })
-
 })
+
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
