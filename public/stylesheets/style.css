@@ -160,6 +160,11 @@ main {
   margin: 15px 0px;
 }
 
+#naj {
+  padding-top: 3%;
+  padding-bottom: 1%;
+
+}
 
 table th {
   text-align: right;
@@ -172,6 +177,9 @@ footer {
   border-top: 1px solid #E0E0E0;
 }
 
+#books_container {
+  margin-bottom: 5%;
+}
 
 #books_container img {
   width: 30rem;
@@ -185,6 +193,9 @@ footer {
   max-width: 250px;
 }
 
+#no_results {
+  height: 100%;
+}
 /* CSS styling for book rating */
 .fa-star,.fa-star-o{
 color:orange;

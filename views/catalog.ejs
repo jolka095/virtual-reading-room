@@ -21,13 +21,13 @@
             <ul class="list-group">
                 <% catArr.forEach( (cat) => { %>
               
-                  <li class="list-group-item"> <a href="<%= 'books/category/'+ cat.idcategories %>"> <%= cat.name %> </a></li>
+                  <li class="list-group-item"> <a href="<%= '/categories/'+ cat.idcategories + '/' + cat.name %>"> <%= cat.name %> </a></li>
                 <% }) %>
             </ul>
             <% } %>
 
         </div>
-        <div class="col-md-9" id="search">
+        <div class="col-md-9 text-left" id="search">
           <form action="/find" method="POST" id="szukaj1">
             <div class="input-group">
 
@@ -81,7 +81,7 @@
 
     <%if (booksArr !== undefined && booksArr !== null) { %>
         <hr>
-        <h3 > Najwyżej oceniane:</h3>
+        <h3 id="naj" > Najwyżej oceniane:</h3>
         <div id="books_container">
 
           <div class="card-deck-wrapper">

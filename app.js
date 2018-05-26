@@ -11,7 +11,8 @@ var usersRouter = require('./routes/users');
 var registerRouter = require('./routes/register');
 var loginRouter = require('./routes/login');
 var passwordHelpRouter = require('./routes/password-help');
-var booksRouter = require('./routes/books');
+var resultsRouter = require('./routes/results');
+var no_resultsRouter = require('./routes/no_results');
 var bookProfileRouter = require('./routes/book_profile');
 var libraryRouter = require('./routes/library');
 var contact = require('./routes/contact');
@@ -21,6 +22,8 @@ var userProfile = require('./routes/user-profile');
 var series = require('./routes/series');
 var logout = require('./routes/logout');
 var katalog = require('./routes/catalog');
+var categories = require('./routes/categories');
+var authors = require('./routes/authors');
 
 var app = express();
 const db = require('./db');
@@ -56,7 +59,8 @@ app.use('/users', usersRouter);
 app.use('/register', registerRouter);
 app.use('/login', loginRouter);
 app.use('/password-help', passwordHelpRouter);
-app.use('/books', booksRouter);
+app.use('/results', resultsRouter);
+app.use('/no_results', no_resultsRouter);
 app.use('/book_profile', bookProfileRouter);
 app.use('/library', libraryRouter);
 app.use('/contact', contact);
@@ -66,6 +70,8 @@ app.use('/user-profile', userProfile);
 app.use('/series', series);
 app.use('/logout', logout);
 app.use('/catalog', katalog);
+app.use('/categories', categories);
+app.use('/authors', authors);
 
 // page not found
 app.get('*', function(req, res){
