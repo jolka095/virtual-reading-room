@@ -31,8 +31,31 @@ router.get('/:book_id', (req, res, next) => {
                 res.render('book_profile', { book: result[0], user: null })
             }
 
-            
+
         }
+    })
+});
+
+router.post('/rate_book/:book_id/user/:user_id', (req, res, next) => {
+
+    const mark = parseInt(req.body.mark) + 1
+    const queryStatement = ` INSERT INTO book_marks (idbooks, idmarks, idusers)
+    VALUES ( ${req.params.book_id}, ${mark}, ${req.params.user_id} )`;
+
+    // console.log("queryStatement\n", queryStatement)
+
+    db.query(queryStatement, (error, result) => {
+
+        if (error) {
+            console.log("error ocurred", error);
+            res.send(JSON.stringify({
+                "code": 400,
+                "failed": "error ocurred"
+            }, null, 2))
+        } else {
+            res.redirect(`/catalog/${req.params.book_id}`)
+        }
+
     })
 });
 

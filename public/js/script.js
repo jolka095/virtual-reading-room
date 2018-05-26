@@ -1,4 +1,4 @@
-$(document).ready( () => {
+$(document).ready(() => {
 
     $("#goToAdvancedSearch").click(() => {
 
@@ -39,6 +39,12 @@ $(document).ready( () => {
                 <option value="OR">OR</option>
             </select>
         </div>`)
+
+    });
+
+    $('#ratingForm').on('submit', function (event) {
+        event.preventDefault(); // Stop the form from causing a page refresh.
+
 
     });
 
