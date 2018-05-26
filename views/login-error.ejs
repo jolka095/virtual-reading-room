@@ -10,7 +10,7 @@
         <form action="/login" method="post">
 
             <h2 class="text-center">Logowanie</h2>
-            <p style="color: red;">Invalid username or password</p>
+            <p style="color: red; text-align:center;"> Nieprawidłowy email lub hasło </p>
             <div class="form-group">
                 <input type="text" class="form-control" name="email" placeholder="E-mail" required="required">
             </div>
@@ -21,11 +21,11 @@
                 <button type="submit" class="btn btn-primary btn-block">Zaloguj</button>
             </div>
             <div class="clearfix">
-                <!-- <label class="pull-left checkbox-inline"><input type="checkbox"> Zapamiętaj mnie </label>
-                <br> -->
-                <a href="/password-help" class="pull-right">Nie pamiętasz hasła?</a>
-                <br>
-                <a href="/register">Nie masz konta? Zarejestruj się!</a>
+                <label class="pull-left checkbox-inline"><input type="checkbox"> Zapamiętaj mnie </label>
+                <br><br>
+                <p><a href="/password-help" class="pull-right" >Nie pamiętasz hasła?</a></p>
+                <p><a href="/register" class="pull-right"> Nie masz konta? <b> Zarejestruj się! </b> </a></p>
+                
             </div>        
         </form>
         
