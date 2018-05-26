@@ -22,8 +22,12 @@ var userProfile = require('./routes/user-profile');
 var series = require('./routes/series');
 var logout = require('./routes/logout');
 var katalog = require('./routes/catalog');
+<<<<<<< HEAD
 var categories = require('./routes/categories');
 var authors = require('./routes/authors');
+=======
+var recommendations = require('./routes/recommendations');
+>>>>>>> f0175862ae047a4172f6fcc48c06277137254f9c
 
 var app = express();
 const db = require('./db');
@@ -70,8 +74,12 @@ app.use('/user-profile', userProfile);
 app.use('/series', series);
 app.use('/logout', logout);
 app.use('/catalog', katalog);
+<<<<<<< HEAD
 app.use('/categories', categories);
 app.use('/authors', authors);
+=======
+app.use('/recommendations', recommendations);
+>>>>>>> f0175862ae047a4172f6fcc48c06277137254f9c
 
 // page not found
 app.get('*', function(req, res){
