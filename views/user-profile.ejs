@@ -6,43 +6,80 @@
 <body>
 <%- include('navbar.ejs') %>
 
-<div class="container text-center">
-    <div class="row">
+<link rel='stylesheet' href='/stylesheets/user_profile.css' />
 
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-4 text-center">
-                            <img src="/images/hermiona.jpg" alt="" class="center-block img-circle img-responsive">
-                        </div><!--/col-->
+<div class="container user_profile">
+    <section class="open_book">
 
-                        <div class="col-xs-12 col-sm-8">
-                            <h1> <%= userData.username %> </h1>
-                            <h4><strong> Imię: </strong> <%= userData.username %> </h4>
-                            <h4><strong> Adres email: </strong> <%= userData.email %> </h4>
-                        </div><!--/col-->
+        <div class="row book_header">
+            <div class="col col-span-6 text-left">
+                <h3>Wirtualna Czytelnia</h3>
+            </div>
+            <div class="col col-span-6 text-right">
+                <h3>Wirtualna Czytelnia</h3>
+            </div>
+        </div>
 
-                        <div class="col-xs-12 col-sm-4">
-                            <h2><strong> 0 </strong></h2>
-                            <p><small>Książek</small></p>
-                            <button class="btn btn-block"><span class="fa fa-hourglass-half"></span> Czytam </button>
-                        </div><!--/col-->
-                        <div class="col-xs-12 col-sm-4">
-                            <h2><strong>0</strong></h2>
-                            <p><small>Książek</small></p>
-                            <button class="btn btn-block"><span class="fa fa-hourglass-start"></span> Chcę przeczytać </button>
-                        </div><!--/col-->
-                        <div class="col-xs-12 col-sm-4">
-                            <h2><strong>0</strong></h2>
-                            <p><small>Ksiażek</small></p>
-                            <button type="button" class="btn btn-block"><span class="fa fa-hourglass-end"></span> Przeczytane </button>
-                        </div><!--/col-->
-                    </div><!--/row-->
-                </div><!--/panel-body-->
-            </div><!--/panel-->
-
-    </div>
+        <div class="row">
+            <div class="col col-span-6 text-center">
+                <img src="/images/hermiona.jpg" alt="" class="center-block img-circle img-responsive">
+            </div>
+            <div class="col col-span-6 text-center">
+                <div class="user"><strong>Username:</strong> <%= userData.username %></div>
+                <div class="user"><strong>Adres-email:</strong> <%= userData.email %></div>
+                <a href='/library' class="btn btn-secondary"> Biblioteczka </a>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="row book_footer">
+                <div class="col col-span-6 text-left">
+                    <h6>1</h6>
+                </div>
+                <div class="col col-span-6 text-right">
+                    <h6>2</h6>
+                </div>
+            </div>
+        </div>
+    </section>
 </div>
+
+<!--<div class="container text-center">-->
+    <!--<div class="row">-->
+
+            <!--<div class="panel panel-default">-->
+                <!--<div class="panel-body">-->
+                    <!--<div class="row">-->
+                        <!--<div class="col-xs-12 col-sm-4 text-center">-->
+                            <!--<img src="/images/hermiona.jpg" alt="" class="center-block img-circle img-responsive">-->
+                        <!--</div>&lt;!&ndash;/col&ndash;&gt;-->
+
+                        <!--<div class="col-xs-12 col-sm-8">-->
+                            <!--<h1> <%= userData.username %> </h1>-->
+                            <!--<h4><strong> Imię: </strong> <%= userData.username %> </h4>-->
+                            <!--<h4><strong> Adres email: </strong> <%= userData.email %> </h4>-->
+                        <!--</div>&lt;!&ndash;/col&ndash;&gt;-->
+
+                        <!--<div class="col-xs-12 col-sm-4">-->
+                            <!--<h2><strong> 0 </strong></h2>-->
+                            <!--<p><small>Książek</small></p>-->
+                            <!--<button class="btn btn-block"><span class="fa fa-hourglass-half"></span> Czytam </button>-->
+                        <!--</div>&lt;!&ndash;/col&ndash;&gt;-->
+                        <!--<div class="col-xs-12 col-sm-4">-->
+                            <!--<h2><strong>0</strong></h2>-->
+                            <!--<p><small>Książek</small></p>-->
+                            <!--<button class="btn btn-block"><span class="fa fa-hourglass-start"></span> Chcę przeczytać </button>-->
+                        <!--</div>&lt;!&ndash;/col&ndash;&gt;-->
+                        <!--<div class="col-xs-12 col-sm-4">-->
+                            <!--<h2><strong>0</strong></h2>-->
+                            <!--<p><small>Ksiażek</small></p>-->
+                            <!--<button type="button" class="btn btn-block"><span class="fa fa-hourglass-end"></span> Przeczytane </button>-->
+                        <!--</div>&lt;!&ndash;/col&ndash;&gt;-->
+                    <!--</div>&lt;!&ndash;/row&ndash;&gt;-->
+                <!--</div>&lt;!&ndash;/panel-body&ndash;&gt;-->
+            <!--</div>&lt;!&ndash;/panel&ndash;&gt;-->
+
+    <!--</div>-->
+<!--</div>-->
 
 <%- include('footer.ejs') %>
 </body>

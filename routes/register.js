@@ -9,7 +9,7 @@ router.get('/login', function(req, res, next) {
   res.render('login', {  });
 });
 
-router.post('/', (req, res) => {
+router.post('/', (req, res, next) => {
 
     var user = {
       "email": req.body.email,
@@ -25,11 +25,6 @@ router.post('/', (req, res) => {
                 "failed":"error ocurred"
             })
         }else{
-            res.send({
-                "code":200,
-                "success":"user registered sucessfully"
-            });
-
             req.login(user, function(err) {
                 if (err) { return next(err); }
                 return res.redirect('/library' + req.user.username);
