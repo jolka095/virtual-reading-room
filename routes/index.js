@@ -4,21 +4,21 @@ const db = require('../db');
 
 // finding books version 2
 router.post('/find', (req, res) => {
-  console.log(JSON.stringify(req.body, null, 2))
+  console.log(JSON.stringify(req.body, null, 2));
 
   let item = req.body.find_item;
   let search_for = req.body.search_for;
 
-  let sql_condition = ''
-  let sql_condition_array = []
-  let sql_query = ''
+  let sql_condition = '';
+  let sql_condition_array = [];
+  let sql_query = '';
 
   if (search_for !== undefined && search_for !== null) {
 
     if (Array.isArray(search_for)) {
 
       for (let i = 0; i < search_for.length; i++) {
-        sql_condition += ` ${req.body.search_condition[i]} ${search_for[i]} LIKE "%${item[i]}%" `
+        sql_condition += ` ${req.body.search_condition[i]} ${search_for[i]} LIKE "%${item[i]}%" `;
         console.log(sql_condition)
       }
 
@@ -30,8 +30,8 @@ router.post('/find', (req, res) => {
     sql_condition = `title LIKE "%${item}%" OR author LIKE "%${item}%" OR category LIKE "%${item}%" OR series LIKE "%${item}%"`
   }
 
-  sql_query = `SELECT * FROM book_info WHERE ${sql_condition} ORDER BY author_id, vol_in_series;`
-  console.log(sql_query)
+  sql_query = `SELECT * FROM book_info WHERE ${sql_condition} ORDER BY author_id, vol_in_series;`;
+  console.log(sql_query);
 
   db.query(sql_query, function (err, rows, fields) {
     if (typeof rows !== 'undefined' && rows.length > 0) {
