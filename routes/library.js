@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.get('/', auth(), function(req, res) {
 
-    const queryStatement = `SELECT * FROM users natural join book_status natural join books WHERE idusers = "${req.user[0].idusers}";; `;
+    const queryStatement = `SELECT * FROM users natural join book_status natural join books WHERE idusers = "${req.user[0].idusers}"; `;
 
     db.query(queryStatement, (error, result) => {
 

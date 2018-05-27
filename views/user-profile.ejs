@@ -2,11 +2,12 @@
 <html>
 <head>
     <%- include('header.ejs') %>
+    <link rel='stylesheet' href='/stylesheets/user_profile.css' />
 </head>
 <body>
         <%if (user) { %>             <%- include('navbar.ejs') %>         <% } else { %>             <%- include('navbar1.ejs') %>         <% } %>
 
-<link rel='stylesheet' href='/stylesheets/user_profile.css' />
+
 
 <div class="container user_profile">
     <section class="open_book">
