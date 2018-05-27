@@ -35,14 +35,13 @@ router.get('/:book_id', (req, res, next) => {
     })
 });
 
-<<<<<<< Updated upstream
 router.post('/rate_book/:book_id/user/:user_id', (req, res, next) => {
 
-    const mark = parseInt(req.body.mark) + 1
+    const mark = parseInt(req.body.mark) + 1;
     const queryStatement = ` INSERT INTO book_marks (idbooks, idmarks, idusers)
     VALUES ( ${req.params.book_id}, ${mark}, ${req.params.user_id} )`;
 
-    console.log("queryStatement\n", queryStatement)
+    console.log("queryStatement\n", queryStatement);
 
     db.query(queryStatement, (error, result) => {
 
@@ -56,8 +55,9 @@ router.post('/rate_book/:book_id/user/:user_id', (req, res, next) => {
             console.log(`Oceniono książkę ${req.params.book_id} przez usera ${req.params.user_id}`)
             res.redirect(`/catalog/${req.params.book_id}`)
         }
+    })
+});
 
-=======
 router.post('/add_to_read/:book_id', function (req, res, next) {
 
 
@@ -103,7 +103,6 @@ router.post('/read/:book_id', function (req, res, next) {
         }else{
             res.redirect(`/catalog/${req.params.book_id}`)
         }
->>>>>>> Stashed changes
     })
 });
 
