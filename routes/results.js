@@ -14,16 +14,14 @@ router.get('/', function (req, res, next) {
 
       res.send("Nie znaleziono książek w bazie")
 
-    }  else {
-      
+    } else {
+
       db.query(queryStatement2, (error, result2) => {
         if (result2 === null || result2 === undefined || result2.length === 0) {
-
-        res.send("Nie znaleziono kategorii w bazie")
-
+          res.send("Nie znaleziono kategorii w bazie")
         } else {
           // console.log(JSON.stringify(result, null, 2))
-          res.render('books', { booksArr: result, catArr: result2})
+          res.render('books', { booksArr: result, catArr: result2, user: req.user })
         }
       })
     }

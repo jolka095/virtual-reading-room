@@ -4,14 +4,15 @@ const passport = require('passport');
 
 const db = require('../db');
 
-router.get('/', function(req, res, next) {
-  res.render('login-error', {  });
+router.get('/', function (req, res, next) {
+  res.render('login-error', { user: req.user });
 });
 
 router.post('/', passport.authenticate('local', {
     successRedirect: '/library',
     failureRedirect: '/login',
-    session: true})
+    session: true
+  })
 );
 
 module.exports = router;

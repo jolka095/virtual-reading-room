@@ -10,12 +10,12 @@ router.get('/:language_name', function (req, res, next) {
   db.query(queryStatement, (error, result) => {
 
     if (result === null || result === undefined || result.length === 0) {
-      
+
       res.send("Nie znaleziono książek w takim języku w bazie")
       // res.render('resource_not_found', { message: message })
-    } 
+    }
     else {
-      res.render('languages', { booksArr: result, lan: req.params.language_name} )
+      res.render('languages', { booksArr: result, lan: req.params.language_name, user: req.user })
     }
   })
 });

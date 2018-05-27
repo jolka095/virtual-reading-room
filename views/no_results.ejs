@@ -6,7 +6,7 @@
 </head>
 
 <body>
-  <%- include('navbar.ejs') %>
+          <%if (user) { %>             <%- include('navbar.ejs') %>         <% } else { %>             <%- include('navbar1.ejs') %>         <% } %>
 
     <div class="container text-left" id="no_results">
 
@@ -25,7 +25,7 @@
      <%if (booksArr !== undefined && booksArr !== null) { %>
       <hr>
       <h3 id="naj" > Najwyżej oceniane:</h3>
-      <div id="books_container">
+      <div class="books_container">
 
         <div class="card-deck-wrapper">
           <div class="card-deck">

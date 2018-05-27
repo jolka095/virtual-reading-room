@@ -61,7 +61,7 @@ router.post('/find', (req, res) => {
               // console.log('id : ', id)
               res.redirect(`/categories/${id}/${item}`);
             }
-             else {
+            else {
               console.log("\nSzukam dalej po serii...");
               db.query(`SELECT series_id FROM book_info WHERE series="${item}"`, function (err, rows, fields) {
 
@@ -73,8 +73,8 @@ router.post('/find', (req, res) => {
                 else {
                   db.query(sql_query, function (err, rows, fields) {
                     if (typeof rows !== 'undefined' && rows.length > 0) {
-                      res.render(`results`, { booksArr: rows, what: item})
-                    } 
+                      res.render(`results`, { booksArr: rows, what: item, user: req.user })
+                    }
                     else {
                       console.log("\nBrak wyników...");
                       res.redirect(`/no_results/${item}`);
@@ -82,7 +82,7 @@ router.post('/find', (req, res) => {
                   })
                 }
               })
-             }
+            }
           })
         }
       })
@@ -111,7 +111,7 @@ router.get('/', function (req, res, next) {
         console.log("\n----> NIEZALOGOWANY\n")
       }
       // console.log(JSON.stringify(result, null, 2))
-      res.render('index', { booksArr: result })
+      res.render('index', { booksArr: result, user: req.user })
     }
 
   })

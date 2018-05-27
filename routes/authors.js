@@ -16,9 +16,9 @@ router.get('/:author_id/:author_name', function (req, res, next) {
     if (result === null || result === undefined || result.length === 0) {
 
       res.send("Nie znaleziono książek takiego autora w bazie")
-      
+
     } else {
-      res.render('authors', { booksArr: result, author: req.params.author_name})
+      res.render('authors', { booksArr: result, author: req.params.author_name, result, user: req.user })
     }
   })
 });
