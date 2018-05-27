@@ -26,6 +26,7 @@ var categories = require('./routes/categories');
 var authors = require('./routes/authors');
 var languages = require('./routes/languages');
 var recommendations = require('./routes/recommendations');
+var bookRead = require('./routes/book_read');
 
 var app = express();
 const db = require('./db');
@@ -76,6 +77,7 @@ app.use('/categories', categories);
 app.use('/authors', authors);
 app.use('/languages', languages);
 app.use('/recommendations', recommendations);
+app.use('/book_read', bookRead);
 
 // page not found
 app.get('*', function (req, res) {
