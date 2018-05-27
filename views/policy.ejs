@@ -6,9 +6,64 @@
 <body>
         <%if (user) { %>             <%- include('navbar.ejs') %>         <% } else { %>             <%- include('navbar1.ejs') %>         <% } %>
 
-        <div class="container text-center">
-            <h5>Polityka</h5>
+<div class="container">
+    <br>  <br>
+<h2> Dostępne formy płatności</h2>
+<hr>
+
+    <!-- Example row of columns -->
+    <div class="row">
+        <div class="col-md-5 text-center" id="info">
+            <h5>
+                <strong> Abomament na 1 miesiąc </strong>
+            </h5>
+            <br>
+            <div class="container text-justify">
+                Korzystanie z platformy przez miesiąc, niezależnie od ilości przeczytanych książek.
+                <br><br>
+            <strong>Cena: 1 uśmiech :)</strong>
+            </div>
         </div>
+        <div class="col-md-1 text-center"></div>
+        <div class="col-md-5 text-center" id="info">
+            <h5>
+                <strong> Abomament na 3 miesiące </strong>
+            </h5>
+            <br>
+            <div class="container text-justify">
+                Korzystanie z platformy przez trzy miesiące, niezależnie od ilości przeczytanych książek.
+                <br><br>
+               <strong>  Cena: 3 uśmiechy :) :) :) </strong>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-5 text-center" id="info">
+            <h5>
+                <strong> Abomament na 6 miesięcy </strong>
+            </h5>
+            <br>
+            <div class="container text-justify">
+                Korzystanie z platformy przez sześć miesiący, niezależnie od ilości przeczytanych książek.
+                <br><br>
+                <strong> Cena: ??</strong> 
+            </div>
+        </div>
+        <div class="col-md-1 text-center"></div>
+        <div class="col-md-5 text-center" id="info">
+            <h5>
+                <strong> Abomament na 12 miesięcy </strong>
+            </h5>
+            <br>
+            <div class="container text-justify">
+                Korzystanie z platformy przez 12 miesięcy, niezależnie od ilości przeczytanych książek.
+                <br><br>
+                <strong> Cena: ??</strong> 
+            </div>
+        </div>
+    </div>
+
+</div>
 
 <%- include('footer.ejs') %>
 </body>

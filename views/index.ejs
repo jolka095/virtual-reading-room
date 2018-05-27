@@ -74,30 +74,34 @@
                                 <i class="fa fa-angle-right"></i> Proste wyszukiwanie </span>
                         </form>-->
 
-
                     </div>
 
-                    <div class="col-md-4 text-center">
-                        <form action="/register" method="POST">
-                            <h6> Dołącz do nas już teraz i wypróbuj serwis bezpłatnie przez 14 dni. </h6>
-                            <div class="form-group">
-                                <input type="email" class="form-control" name="email" placeholder="E-mail" required>
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control" name="username" placeholder="Login" required>
-                            </div>
-                            <div class="form-group">
-                                <input type="password" class="form-control" name="password" placeholder="Hasło" required>
-                            </div>
-                            <div class="form-group">
-                                <input type="checkbox" checked tabindex="3">
-                                <label for="remember_me" class="greyText">Akceptuję
-                                    <a href="/termsofuse">regulamin</a>
-                                </label>
-                                <button type="submit" class="btn btn-warning btn-block">Zarejestruj</button>
-                            </div>
-                        </form>
-                    </div>
+                    <%if (!user) { %>
+                        <div class="col-md-4 text-center">
+                            <form action="/register" method="POST">
+                                <h6> Dołącz do nas już teraz i wypróbuj serwis bezpłatnie przez 14 dni. </h6>
+                                <div class="form-group">
+                                    <input type="email" class="form-control" name="email" placeholder="E-mail" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="username" placeholder="Login" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" name="password" placeholder="Hasło" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="checkbox" checked tabindex="3">
+                                    <label for="remember_me" class="greyText">Akceptuję
+                                        <a href="/termsofuse">regulamin</a>
+                                    </label>
+                                    <button type="submit" class="btn btn-warning btn-block">Zarejestruj</button>
+                                </div>
+                            </form>
+                        </div>
+                    <% } else { %>
+                        <div class="col-md-4 text-center"></div>
+                    <% } %>
+
                 </div>
             </div>
 
@@ -105,17 +109,7 @@
             <div class="container">
                 <!-- Example row of columns -->
                 <div class="row">
-                    <div class="col-md-4 text-center" id="info">
-                        <h5>
-                            <strong> Szukasz następnej epickiej lektury? </strong>
-                        </h5>
-                        <br>
-                        <div class="container text-justify">
-                            Trafiłes we właściwe miejsce! Zdradź nam swoje ulubione gatunki, serie, ksiązki i ich autorów, a bedziemy w stanie polecić
-                            Ci lektury dopasowane idealnie do Twoich gustów.
-                        </div>
-                    </div>
-                    <div class="col-md-4 text-center" id="info">
+                    <div class="col-md-5 text-center" id="info">
                         <h5>
                             <strong> Nie masz czasu na wizytę w księgarni? </strong>
                         </h5>
@@ -125,7 +119,8 @@
                             fotelu, po drodze do pracy czy stojąc w korku. Dzieli Cię od niej tylko kliknięcie!
                         </div>
                     </div>
-                    <div class="col-md-4 text-center" id="info">
+                    <div class="col-md-1 text-center"></div>
+                    <div class="col-md-5 text-center" id="info">
                         <h5>
                             <strong> Gubisz rachubę przeczytanych książek? </strong>
                         </h5>
@@ -149,7 +144,7 @@
 
 
                     <%if (booksArr !== undefined && booksArr !== null) { %>
-                        <div id="books_container">
+                        <div class="books_container">
 
                             <div class="card-deck-wrapper">
                                 <div class="card-deck text-center">
