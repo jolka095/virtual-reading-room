@@ -185,18 +185,18 @@ footer {
   border-top: 1px solid #E0E0E0;
 }
 
-#books_container {
+.books_container {
   margin-bottom: 15%;
 }
 
-#books_container img {
+.books_container img {
   width: 30rem;
   height: 20rem;
   max-height: 200px;
   object-fit: contain;
 }
 
-#books_container .card {
+.books_container .card {
   min-width: 200px;
   max-width: 250px;
   margin-bottom: 2%;
