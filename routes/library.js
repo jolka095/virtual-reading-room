@@ -11,10 +11,10 @@ router.get('/', auth(), function(req, res) {
 
         if (result === null || result === undefined || result.length === 0) {
 
-            res.render('user-profile', { userData: req.user[0] })
+            res.render('user-profile', { userData: req.user[0], user: req.user })
 
         }  else {
-            res.render('library', { booksArr: result})
+            res.render('library', { booksArr: result, user: req.user})
         }
     })
 });
