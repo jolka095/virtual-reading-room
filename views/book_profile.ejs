@@ -12,8 +12,9 @@
                 <div class="row">
 
                     <div class="col-md-4 ">
+                        <a href="book_read.ejs" title="Czytaj >>">
                         <img class="img-fluid mx-auto d-block" src="/<%= book.image %>" alt="book cover">
-
+                        </a>
                         <%if (user !== undefined && user !== null) { %>
                             <div class="dropdown show text-center">
                                     <button class="btn dropdown-toggle" type="button" data-toggle="dropdown" id="dropdownMenuButton"> Dodaj do biblioteczki </button>
