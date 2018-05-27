@@ -51,9 +51,13 @@ main .col-md-6 {
   cursor: pointer;
 }
 
-.search_condition {
+select.form-control {
+  max-width: 150px;
+}
+select.form-control + button, select.form-control.btn.search_condition {
   max-width: 90px;
 }
+
 .jumbotron {
   background-image: url('/images/jumbo1.jpg');
   color: white;
