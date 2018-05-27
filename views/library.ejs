@@ -44,6 +44,7 @@
                                 <div class="card-deck">
                                     <% booksArr.forEach( (book) => { %>
                                         <%if (book.idstatus == 3 ) { %>
+
                                             <div class="card text-center">
                                                 <br>
                                                 <a href="book_read.ejs" title="Czytaj >>">
@@ -58,6 +59,9 @@
                                                     <a href="<%= '/book_profile/'+ book.idbooks %>" class="btn btn-info btn-block mt-auto"> Więcej </a>
                                                 </div>
                                             </div>
+                                            
+                                        <% } else { %>
+                                            <h5> Nie czytasz aktualnie żadnej książki. </h5>
                                         <% } %>
                                     <% }) %>
                                 </div>
@@ -90,6 +94,8 @@
                                                     <a href="<%= '/book_profile/'+ book.idbooks %>" class="btn btn-info btn-block mt-auto"> Więcej </a>
                                                 </div>
                                             </div>
+                                        <% } else { %>
+                                            <h5> Brak książek do przeczytania.</h5>
                                         <% } %>
                                     <% }) %>
                                 </div>
@@ -122,6 +128,8 @@
                                                     <a href="<%= '/book_profile/'+ book.idbooks %>" class="btn btn-info btn-block mt-auto"> Więcej </a>
                                                 </div>
                                             </div>
+                                        <% } else { %>
+                                            <h5> Nie przeczytałeś jeszcze żadnej książki.</h5>
                                         <% } %>
                                     <% }) %>
                                 </div>
