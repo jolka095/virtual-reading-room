@@ -15,8 +15,11 @@
         <br>
         <h2>Moja biblioteczka</h2>
         <%if (booksArr == undefined || booksArr == null) { %>
-            <h4> Biblioteczka jest <strong>pusta </strong>- przejdź do <a href="/catalog"> katalogu.</a></h4>
-        <% } %>
+            <h4> Biblioteczka jest <strong> pusta </strong>- przejdź do <a href="/catalog"> katalogu.</a></h4>
+        <% } else {
+            in_reading = 0;
+            read = 0;
+            to_read = 0; }%>
         <br>
         <br>
         <div class="panel with-nav-tabs panel-info" role="tablist">
@@ -36,14 +39,16 @@
 
             <div class=" panel-body tab-content text-left">
 
-                <div id="czytam" role="tabpanel" class="tab-pane fade">
+                <div id="czytam" role="tabpanel" class="tab-pane fade active">
                     <br>
                     <%if (booksArr !== undefined && booksArr !== null) { %>
                         <div class="books_container">
                             <div class="card-deck-wrapper">
                                 <div class="card-deck">
                                     <% booksArr.forEach( (book) => { %>
-                                        <%if (book.idstatus == 3 ) { %>
+                                        <%if (book.idstatus == 3 ) { 
+                                            in_reading = in_reading + 1;
+                                            console.log(in_reading);%>
 
                                             <div class="card text-center">
                                                 <br>
@@ -60,10 +65,13 @@
                                                 </div>
                                             </div>
                                             
-                                        <% } else { %>
-                                            <h5> Nie czytasz aktualnie żadnej książki. </h5>
-                                        <% } %>
-                                    <% }) %>
+                                        <% } %> 
+                                    <% }) 
+                                    if (in_reading == 0) {%>
+                                        <h5> Nie czytasz aktualnie żadnej książki. </h5>
+                                        <br><br><br>
+                                    <% } %>
+
                                 </div>
                             </div>
                         </div>
@@ -78,8 +86,11 @@
                         <div class="books_container">
                             <div class="card-deck-wrapper">
                                 <div class="card-deck">
-                                    <% booksArr.forEach( (book) => { %>
-                                        <%if (book.idstatus == 2 ) { %>
+                                    <% 
+                                    booksArr.forEach( (book) => { %>
+                                        <%if (book.idstatus == 2 ) { 
+                                            to_read = to_read + 1; 
+                                            console.log(to_read);%>
                                             <div class="card text-center">
                                                 <br>
                                                 <a href="book_read.ejs" title="Czytaj >>">
@@ -94,10 +105,13 @@
                                                     <a href="<%= '/book_profile/'+ book.idbooks %>" class="btn btn-info btn-block mt-auto"> Więcej </a>
                                                 </div>
                                             </div>
-                                        <% } else { %>
-                                            <h5> Brak książek do przeczytania.</h5>
-                                        <% } %>
-                                    <% }) %>
+                                      
+                                        <% } %> 
+                                    <% }) 
+                                    if (to_read == 0) {%>
+                                        <h5> Brak książek do przeczytania.</h5>
+                                        <br><br><br>
+                                    <% } %>
                                 </div>
                             </div>
                         </div>
@@ -113,7 +127,9 @@
                             <div class="card-deck-wrapper">
                                 <div class="card-deck">
                                     <% booksArr.forEach( (book) => { %>
-                                        <%if (book.idstatus == 1 ) { %>
+                                        <%if (book.idstatus == 1 ) { 
+                                            read = read + 1;
+                                            console.log(read);%>
                                             <div class="card text-center">
                                                 <br>
                                                 <a href="book_read.ejs" title="Czytaj >>">
@@ -128,10 +144,12 @@
                                                     <a href="<%= '/book_profile/'+ book.idbooks %>" class="btn btn-info btn-block mt-auto"> Więcej </a>
                                                 </div>
                                             </div>
-                                        <% } else { %>
+                                        <% } %> 
+                                        <% }) 
+                                        if (read == 0) {%>
                                             <h5> Nie przeczytałeś jeszcze żadnej książki.</h5>
+                                            <br><br><br>
                                         <% } %>
-                                    <% }) %>
                                 </div>
                             </div>
                         </div>
