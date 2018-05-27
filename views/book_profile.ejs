@@ -16,6 +16,8 @@
                         <img class="img-fluid mx-auto d-block" src="/<%= book.image %>" alt="book cover">
                         </a>
                         <%if (user !== undefined && user !== null) { %>
+                            
+                            <%if (status !== undefined && status !== null && status == 0) { %>
                             <div class="dropdown show text-center">
                                     <button class="btn dropdown-toggle" type="button" data-toggle="dropdown" id="dropdownMenuButton"> Dodaj do biblioteczki </button>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -27,6 +29,20 @@
                                         </form>
                                     </div>
                             </div>
+                            <% } %>
+                            <%if (status !== undefined && status !== null && status == 1) { %>
+                                <h3> Przeczytana </h3>
+                                <h5> Czy tu powinien byc przycisk typu usuń z biblioteczki?</h5>
+                            <% } %>
+                            <%if (status !== undefined && status !== null && status == 3) { %>
+                                <h3> Teraz czytam </h3>
+                                <h5> I TO SIE MA CHYBA AUTOMATYCZNIE DODAWAĆ?</h5>
+                            <% } %>
+                            <%if (status !== undefined && status !== null && status == 2) { %>
+                                <h3> CHCĘ PRZECZYTAĆ </h3>
+                                <h5>Czy tu powinno być znień status na przeczytane albo usuń?</h5>
+                            <% } %>
+
                         <% } %>
                         <!-- <div class="btn-group" role="group"> -->
                     </div>
@@ -113,6 +129,7 @@
                             <%= book.total_marks_num %> ocen
 
                             <%if (user !== undefined && user !== null) { %>
+                                <%if (status !== undefined && status !== null && status == 1) { %>
                                 <%if (mark !== undefined && mark !== null && mark == 10) { %>
 
                                 <br><br>
@@ -146,6 +163,7 @@
                                     <noscript><input type="submit" value="Submit"></noscript>
                                 </form>
 
+                                 <% } %>
                                  <% } %>
                             <% } %>
                         </div>
