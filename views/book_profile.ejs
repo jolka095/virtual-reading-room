@@ -113,6 +113,8 @@
                             <%= book.total_marks_num %> ocen
 
                             <%if (user !== undefined && user !== null) { %>
+                                <%if (mark !== undefined && mark !== null && mark == 10) { %>
+
                                 <br><br>
                                 <form action="<%= '/book_profile/rate_book/'+ book.book_id + '/user/'+ user.idusers %>" method="POST" id="ratingForm">
                                     <!-- <label>Oceń książkę:</label> -->
@@ -127,7 +129,24 @@
                                     </select>
                                     <noscript><input type="submit" value="Submit"></noscript>
                                 </form>
+                                <% } else { %>
+                                   <br> Twoja ocena to: <%=  mark - 1 %>
+                                   <br><br>
+                                <form action="<%= '/book_profile/rate_book/'+ book.book_id + '/user/'+ user.idusers %>" method="POST" id="ratingForm">
+                                    <!-- <label>Oceń książkę:</label> -->
+                                    <select name="mark" id="ratingSelect" class="form-control" onchange='this.form.submit()' style="max-width: 150px;">
+                                        <option selected disabled> Zmień ocenę: </option>
+                                        <option value="0">Zła (0)</option>
+                                        <option value="1">Słaba (1)</option>
+                                        <option value="2">Może być (2)</option>
+                                        <option value="3">Przeciętna(3)</option>
+                                        <option value="4">Dobra(4)</option>
+                                        <option value="5">Bardzo dobra(5)</option>
+                                    </select>
+                                    <noscript><input type="submit" value="Submit"></noscript>
+                                </form>
 
+                                 <% } %>
                             <% } %>
                         </div>
 
