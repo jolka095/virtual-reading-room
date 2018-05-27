@@ -44,11 +44,11 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(session({
-    secret: 'secret',
-    name: 'session_id',
-    saveUninitialized: false,
-    resave: true,
-    cookie  : { maxAge  : new Date(Date.now() + (60 * 1000 * 30 *3)) }
+  secret: 'secret',
+  name: 'session_id',
+  saveUninitialized: false,
+  resave: true,
+  cookie: { maxAge: new Date(Date.now() + (60 * 1000 * 30 * 3)) }
 }));
 
 app.use(passport.initialize());
@@ -78,17 +78,17 @@ app.use('/languages', languages);
 app.use('/recommendations', recommendations);
 
 // page not found
-app.get('*', function(req, res){
-  res.render('page_not_found')
+app.get('*', function (req, res) {
+  res.render('page_not_found', { user: req.user })
 });
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};

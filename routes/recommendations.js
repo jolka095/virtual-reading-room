@@ -13,7 +13,7 @@ router.get('/', auth(), function (req, res, next) {
             res.send("Nie znaleziono takiego użytkownika")
         }
         else {
-            res.render('recommendations', { userData: result[0] })
+            res.render('recommendations', { userData: result[0], user: req.user })
         }
     });
 

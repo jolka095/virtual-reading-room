@@ -8,7 +8,6 @@ router.get('/', (req, res, next) => {
     res.redirect('/');
 });
 
-
 router.get('/:book_id', (req, res, next) => {
 
     const queryStatement = `SELECT * FROM book_info WHERE book_id = ${req.params.book_id}; `;
@@ -19,7 +18,7 @@ router.get('/:book_id', (req, res, next) => {
             //   console.log(JSON.stringify(result[0], null, 2));
             const message = "Nie znaleziono takiej ksiażki w bazie";
             // res.render('resource_not_found', { message: message })
-            res.render('page_not_found')
+            res.render('page_not_found', { user: req.user })
         } else {
             console.log(JSON.stringify(result[0], null, 2));
 
@@ -42,7 +41,7 @@ router.post('/rate_book/:book_id/user/:user_id', (req, res, next) => {
     const queryStatement = ` INSERT INTO book_marks (idbooks, idmarks, idusers)
     VALUES ( ${req.params.book_id}, ${mark}, ${req.params.user_id} )`;
 
-    // console.log("queryStatement\n", queryStatement)
+    console.log("queryStatement\n", queryStatement)
 
     db.query(queryStatement, (error, result) => {
 
@@ -53,6 +52,7 @@ router.post('/rate_book/:book_id/user/:user_id', (req, res, next) => {
                 "failed": "error ocurred"
             }, null, 2))
         } else {
+            console.log(`Oceniono książkę ${req.params.book_id} przez usera ${req.params.user_id}`)
             res.redirect(`/catalog/${req.params.book_id}`)
         }
 

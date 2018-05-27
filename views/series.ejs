@@ -6,7 +6,7 @@
 </head>
 
 <body>
-  <%- include('navbar.ejs') %>
+          <%if (user) { %>             <%- include('navbar.ejs') %>         <% } else { %>             <%- include('navbar1.ejs') %>         <% } %>
 
     <div class="container text-left">
 

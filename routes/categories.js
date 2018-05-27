@@ -10,12 +10,12 @@ router.get('/:category_id/:category_name', function (req, res, next) {
   db.query(queryStatement, (error, result) => {
 
     if (result === null || result === undefined || result.length === 0) {
-      
+
       res.send("Nie znaleziono książek z takiej kategorii w bazie")
       // res.render('resource_not_found', { message: message })
-    } 
+    }
     else {
-      res.render('categories', { booksArr: result, cat: req.params.category_name})
+      res.render('categories', { booksArr: result, cat: req.params.category_name, user: req.user })
     }
   })
 });

@@ -44,7 +44,9 @@ $(document).ready(() => {
 
     $('#ratingForm').on('submit', function (event) {
         event.preventDefault(); // Stop the form from causing a page refresh.
+        console.log( $('#ratingSelect').val())
 
+        // todo?
 
     });
 

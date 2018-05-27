@@ -6,8 +6,11 @@
 </head>
 
 <body>
-    <%- include('navbar1.ejs') %>
-
+        <%if (user) { %>
+            <%- include('navbar.ejs') %>
+        <% } else { %>
+            <%- include('navbar1.ejs') %>
+        <% } %>
         <main role="main">
 
             <div class="jumbotron container text-left">

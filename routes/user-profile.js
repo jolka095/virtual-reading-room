@@ -3,11 +3,6 @@ var router = express.Router();
 const auth = require('../authentication/middleware');
 const db = require('../db');
 
-// router.get('/', function(req, res, next) {
-//   res.render('user-profile', {  });
-// });
-
-
 router.get('/', auth(), function (req, res, next) {
 
     console.log("User zalogowany:", req.user[0])
@@ -20,7 +15,7 @@ router.get('/', auth(), function (req, res, next) {
             res.send("Nie znaleziono takiego użytkownika")
         }
         else {
-            res.render('user-profile', { userData: result[0] })
+            res.render('user-profile', { userData: result[0], user: req.user})
         }
     });
 
