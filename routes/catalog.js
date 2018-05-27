@@ -24,6 +24,7 @@ router.get('/', function (req, res, next) {
         if (result2 === null || result2 === undefined || result2.length === 0) {
 
           res.send("Nie znaleziono kategorii w bazie")
+<<<<<<< Updated upstream
 
         } else {
           // console.log(JSON.stringify(result, null, 2))
@@ -33,5 +34,16 @@ router.get('/', function (req, res, next) {
     }
   })
 })
+=======
+  
+          } else {
+            // console.log(JSON.stringify(result, null, 2))
+            res.render('catalog', { booksArr: result, catArr: result2})
+          }
+        })
+      }
+    })
+  });
+>>>>>>> Stashed changes
 
 module.exports = router;

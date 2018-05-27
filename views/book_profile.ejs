@@ -15,12 +15,16 @@
                         <img class="img-fluid mx-auto d-block" src="/<%= book.image %>" alt="book cover">
 
                         <%if (user !== undefined && user !== null) { %>
-                            <div class="dropdown text-center">
-                                <button class="btn dropdown-toggle" type="button" data-toggle="dropdown"> Dodaj do biblioteczki
-                                    <ul class="dropdown-menu">
-                                        <li> <i class="fa fa-check-circle"> Przeczytane</i> </li>
-                                        <li> <i class="fa fa-plus-circle"> Chcę przeczytać</i> </li>
-                                    </ul>
+                            <div class="dropdown show text-center">
+                                    <button class="btn dropdown-toggle" type="button" data-toggle="dropdown" id="dropdownMenuButton"> Dodaj do biblioteczki </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <form action = "<%= '/book_profile/read/'+ book.book_id %>"  method = "POST">
+                                        <button class="dropdown-item btn btn-secondary fa fa-check-circle" type="submit" id="przeczytana"> Przeczytane</button>
+                                        </form>
+                                        <form action = "<%= '/book_profile/add_to_read/'+ book.book_id %>"  method = "POST">
+                                        <button class="dropdown-item btn btn-secondary fa fa-plus-circle" type="submit" id="chce_przeczytac"> Chcę przeczytać</button>
+                                        </form>
+                                    </div>
                             </div>
                         <% } %>
                         <!-- <div class="btn-group" role="group"> -->
