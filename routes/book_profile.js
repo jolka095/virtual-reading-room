@@ -69,14 +69,14 @@ router.post('/add_to_read/:book_id', function (req, res, next) {
 
     console.log(book_st);
 
-    db.query(`INSERT into book_status SET ?`, book_st , function (err, rows, fields) {
+    db.query(`INSERT into book_status SET ?`, book_st, function (err, rows, fields) {
         if (err) {
-            console.log("error ocurred",err);
+            console.log("error ocurred", err);
             res.send({
-                "code":400,
-                "failed":"error ocurred"
+                "code": 400,
+                "failed": "error ocurred"
             })
-        }else{
+        } else {
             res.redirect(`/catalog/${req.params.book_id}`)
         }
     })
@@ -93,14 +93,14 @@ router.post('/read/:book_id', function (req, res, next) {
 
     console.log(book_st);
 
-    db.query(`INSERT into book_status SET ?`, book_st , function (err, rows, fields) {
+    db.query(`INSERT into book_status SET ?`, book_st, function (err, rows, fields) {
         if (err) {
-            console.log("error ocurred",err);
+            console.log("error ocurred", err);
             res.send({
-                "code":400,
-                "failed":"error ocurred"
+                "code": 400,
+                "failed": "error ocurred"
             })
-        }else{
+        } else {
             res.redirect(`/catalog/${req.params.book_id}`)
         }
     })
