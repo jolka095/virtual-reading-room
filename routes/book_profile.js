@@ -11,7 +11,7 @@ router.get('/', (req, res, next) => {
 router.get('/:book_id', (req, res, next) => {
 
     const queryStatement = `SELECT * FROM book_info WHERE book_id = ${req.params.book_id}; `;
-    const queryStatement2 = `SELECT * FROM book_marks WHERE idbooks = ${req.params.book_id} AND idusers = ${req.user[0].idusers}; `;
+   
 
     db.query(queryStatement, (error, result) => {
 
@@ -23,24 +23,26 @@ router.get('/:book_id', (req, res, next) => {
         } else {
             console.log(JSON.stringify(result[0], null, 2));
             
-            db.query(queryStatement2, (error, result2) => {
+            if (req.user) {
+                const queryStatement2 = `SELECT * FROM book_marks WHERE idbooks = ${req.params.book_id} AND idusers = ${req.user[0].idusers}; `;            
+                db.query(queryStatement2, (error, result2) => {
 
-                if (result2 === null || result2 === undefined || result2.length === 0) {
-                     // console.log(JSON.stringify(result2[0], null, 2));
-                    const message = "Nie znaleziono oceny  w bazie";
-                    // res.render('resource_not_found', { message: message })
-                    res.render('book_profile', { book: result[0], user: req.user[0], mark: 10})
+                    if (result2 === null || result2 === undefined || result2.length === 0) {
+                        // console.log(JSON.stringify(result2[0], null, 2));
+                        const message = "Nie znaleziono oceny  w bazie";
+                        // res.render('resource_not_found', { message: message })
+                        res.render('book_profile', { book: result[0], user: req.user[0], mark: 10})
 
-                } else{
-                    if (req.user) {
+                    } else{
                         console.log("\nOK  ZALOGOWANY\n");
                         res.render('book_profile', { book: result[0], user: req.user[0], mark: result2[0].idmarks })
-                    } else {
-                        console.log("\nX  NIEZALOGOWANY\n");
-                        res.render('book_profile', { book: result[0], user: null })
                     }
-                }
-            })
+                
+                })
+            }else {
+                console.log("\nX  NIEZALOGOWANY\n");
+                res.render('book_profile', { book: result[0], user: null })
+            }
         }
     })
 });
