@@ -12,9 +12,11 @@
                 <div class="row">
 
                     <div class="col-md-4 ">
-                        <a href="book_read.ejs" title="Czytaj >>">
-                        <img class="img-fluid mx-auto d-block" src="/<%= book.image %>" alt="book cover">
-                        </a>
+                        <%if (user) { %> <a href="/book_read/<%= book.book_id %>"  title="Czytaj >>">
+                            <img class="img-fluid mx-auto d-block" src="/<%= book.image %>" alt="book cover">
+                        </a> %> <% } else { %>
+                            <img class="img-fluid mx-auto d-block" src="/<%= book.image %>" alt="book cover">
+                        <% } %>
                         <%if (user !== undefined && user !== null) { %>
                             
                             <%if (status !== undefined && status !== null && status == 0) { %>

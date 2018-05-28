@@ -1,13 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
-router.get('/', function(req, res, next) {
-    var filePath = "/src/HP$.epub";
-
-    fs.readFile(__dirname + filePath , function (err,data){
-        res.contentType("application/pdf");
-        res.send(data);
-    });
+router.get('/:book_id', function(req, res, next) {
+    res.render('book_read');
 });
 
 module.exports = router;
