@@ -26,7 +26,7 @@
                   <img class="card-img-top img-fluid mx-auto d-block" src="/<%= book.image %>" alt="<%= book.title + " " + ' image' %>" >
                   <div class="card-body d-flex flex-column">
                     <p class="card-text text-center"><strong><i><%= book.title %></i></strong> <br>
-                      <%= book.author %></p>
+                      <a href="/authors/<%= book.author_id %>/<%= book.author %>">                                                             <%= book.author %>                                                         </a></p>
                     <a href="<%= '/book_profile/'+ book.book_id %>" class="btn btn-info btn-block mt-auto"> Więcej </a>
                   </div>
                 </div>
