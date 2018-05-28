@@ -12,7 +12,184 @@
 
     <h2>W serii <em><%= series %></em>:</h2>
     <hr>
-     
+    <%if (user) { %>     
+      <br>
+      <br>
+      <div class="panel with-nav-tabs panel-info" role="tablist">
+  
+        <ul class="nav nav-tabs" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active " href="#all" role="tab" data-toggle="tab"> Wszystkie </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#out" role="tab" data-toggle="tab"> Książki poza moją biblioteczką </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#in" role="tab" data-toggle="tab"> Książki w mojej biblioteczce </a>
+            </li>
+        </ul> <!-- end of tablist -->
+      
+          
+        <div class=" panel-body tab-content text-left">
+  
+            <div id="all" role="tabpanel" class="tab-pane fade active show">
+                <br>
+                <%if (booksArr !== undefined && booksArr !== null) { %>
+                    <div class="books_container">
+                        <div class="card-deck-wrapper">
+                            <div class="card-deck">
+                                <% booksArr.forEach( (book) => { %>
+                                        <div class="card text-center">
+                                            <br>
+                                            <%if (user) { %> <a href="/book_read/<%= book.book_id %>"  title="Czytaj >>">
+                                                <img class="card-img-top img-fluid mx-auto d-block" src="/<%= book.image %>" alt="<%= book.title + " " + ' image' %>">
+                                            </a> %> <% } else { %>
+                                            <img class="card-img-top img-fluid mx-auto d-block" src="/<%= book.image %>" alt="<%= book.title + " " + ' image' %>">
+                                            <% } %>
+                                            <div class="card-body d-flex flex-column">
+                                                <p class="card-text">
+                                                    <strong> <i> <%= book.title %> </i> </strong>
+                                                    <br>
+                                                    <%= book.author %>
+                                                </p>
+                                                <a href="<%= '/book_profile/'+ book.book_id %>" class="btn btn-info btn-block mt-auto"> Więcej </a>
+                                            </div>
+                                        </div>
+                                        
+                                <% }) %> 
+                            </div>
+                        </div>
+                    </div>
+                
+                <% } %>
+            </div> <!-- end of 'all' -->
+  
+            <div id="in" role="tabpanel" class="tab-pane fade">
+                <br>
+                <%if (libraryArr !== undefined && libraryArr !== null && libraryArr !== 0) { %>
+                    <div class="books_container">
+                        <div class="card-deck-wrapper">
+                            <div class="card-deck">
+                                <% libraryArr.forEach( (book_in_library) => { %>
+                                    
+                                        <div class="card text-center">
+                                            <br>
+                                            <a href="book_read.ejs" title="Czytaj >>">
+                                                <img class="card-img-top img-fluid mx-auto d-block" src="/<%= book_in_library.image %>" alt="<%= book_in_library.title + " " + ' image' %>">
+                                            </a>
+                                            <div class="card-body d-flex flex-column">
+                                                <p class="card-text">
+                                                    <strong> <i> <%= book_in_library.title %> </i> </strong>
+                                                    <br>
+                                                    <%= book_in_library.author %>
+                                                </p>
+                                                <a href="<%= '/book_profile/'+ book_in_library.idbooks %>" class="btn btn-info btn-block mt-auto"> Więcej </a>
+                                            </div>
+                                        </div>
+                                    
+                                    <% }) %> 
+                                
+                            </div>
+                        </div>
+                    </div>
+                <% } else if ( libraryArr == 0){ %>
+                    <h5> Nie masz książek z tej kategorii w swojej biblioteczce.</h5>
+                <% } %>
+            </div> <!-- end of 'in' -->
+  
+            <div id="out" role="tabpanel" class="tab-pane fade">
+                    <br>
+                    <%if (not_libraryArr !== undefined &&  not_libraryArr !== null && not_libraryArr !== 0) { %>
+                        <div class="books_container">
+                            <div class="card-deck-wrapper">
+                                <div class="card-deck">
+                                  <% not_libraryArr.forEach( (book) => { %>
+                                                                                          
+                                        <div class="card text-center">
+                                            <br>
+                                            <a href="book_read.ejs" title="Czytaj >>">
+                                                <img class="card-img-top img-fluid mx-auto d-block" src="/<%= book.image %>" alt="<%= book.title + " " + ' image' %>">
+                                            </a>
+                                            <div class="card-body d-flex flex-column">
+                                                <p class="card-text">
+                                                    <strong> <i> <%= book.title %> </i> </strong>
+                                                    <br>
+                                                    <%= book.author %>
+                                                </p>
+                                                <a href="<%= '/book_profile/'+ book.book_id %>" class="btn btn-info btn-block mt-auto"> Więcej </a>
+                                            </div>
+                                        </div>
+                                                                                      
+                                    <% }) %> 
+                                </div>
+                            </div>
+                        </div>
+                    <% } else { %>
+                      <%if (booksArr !== undefined && booksArr !== null) { %>
+                          <div class="books_container">
+                              <div class="card-deck-wrapper">
+                                  <div class="card-deck">
+                                      <% booksArr.forEach( (book) => { %>
+                                              <div class="card text-center">
+                                                  <br>
+                                                  <%if (user) { %> <a href="/book_read/<%= book.book_id %>"  title="Czytaj >>">
+                                                      <img class="card-img-top img-fluid mx-auto d-block" src="/<%= book.image %>" alt="<%= book.title + " " + ' image' %>">
+                                                  </a> %> <% } else { %>
+                                                  <img class="card-img-top img-fluid mx-auto d-block" src="/<%= book.image %>" alt="<%= book.title + " " + ' image' %>">
+                                                  <% } %>
+                                                  <div class="card-body d-flex flex-column">
+                                                      <p class="card-text">
+                                                          <strong> <i> <%= book.title %> </i> </strong>
+                                                          <br>
+                                                          <%= book.author %>
+                                                      </p>
+                                                      <a href="<%= '/book_profile/'+ book.book_id %>" class="btn btn-info btn-block mt-auto"> Więcej </a>
+                                                  </div>
+                                              </div>
+                                              
+                                      <% }) %> 
+                                  </div>
+                              </div>
+                          </div>
+                      
+                      <% } else {%>
+                      <%if (booksArr !== undefined && booksArr !== null) { %>
+                          <div class="books_container">
+                              <div class="card-deck-wrapper">
+                                  <div class="card-deck">
+                                      <% booksArr.forEach( (book) => { %>
+                                              <div class="card text-center">
+                                                  <br>
+                                                  <%if (user) { %> <a href="/book_read/<%= book.book_id %>"  title="Czytaj >>">
+                                                      <img class="card-img-top img-fluid mx-auto d-block" src="/<%= book.image %>" alt="<%= book.title + " " + ' image' %>">
+                                                  </a> %> <% } else { %>
+                                                  <img class="card-img-top img-fluid mx-auto d-block" src="/<%= book.image %>" alt="<%= book.title + " " + ' image' %>">
+                                                  <% } %>
+                                                  <div class="card-body d-flex flex-column">
+                                                      <p class="card-text">
+                                                          <strong> <i> <%= book.title %> </i> </strong>
+                                                          <br>
+                                                          <%= book.author %>
+                                                      </p>
+                                                      <a href="<%= '/book_profile/'+ book.book_id %>" class="btn btn-info btn-block mt-auto"> Więcej </a>
+                                                  </div>
+                                              </div>
+                                              
+                                      <% }) %> 
+                                  </div>
+                              </div>
+                          </div>
+                      
+                      <% } %>
+                      <% } %>
+                      <!-- <h5> Wszystkie książki z tej kategorii są w Twojej biblioteczce.</h5> -->
+                <% } %>
+  
+                </div> <!-- end of przeczytane -->
+  
+        </div>
+      </div>
+      <% } else {%>
           
     <%if (booksArr !== undefined && booksArr !== null) { %>
         <div class="books_container">
@@ -37,6 +214,7 @@
 
         </div>
 
+        <% } %>
         <% } %>
     </div>
 
