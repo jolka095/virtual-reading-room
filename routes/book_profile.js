@@ -90,7 +90,7 @@ router.post('/rate_book/:book_id/user/:user_id', (req, res, next) => {
                     }, null, 2))
                 } else {
                     console.log(`Oceniono książkę ${req.params.book_id} przez usera ${req.params.user_id} na ${mark}`);
-                    res.redirect(`/book_profile/${req.params.book_id}/${mark}`)
+                    res.redirect(`/book_profile/${req.params.book_id}`)
                 }
             })
         }
