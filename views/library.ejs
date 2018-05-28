@@ -59,7 +59,7 @@
                                                     <p class="card-text">
                                                         <strong> <i> <%= book.title %> </i> </strong>
                                                         <br>
-                                                        <%= book.author %>
+                                                        <a href="/authors/<%= book.author_id %>/<%= book.author %>">                                                             <%= book.author %>                                                         </a>
                                                     </p>
                                                     <a href="<%= '/book_profile/'+ book.idbooks %>" class="btn btn-info btn-block mt-auto"> Więcej </a>
                                                 </div>
@@ -100,7 +100,7 @@
                                                     <p class="card-text">
                                                         <strong> <i> <%= book.title %> </i> </strong>
                                                         <br>
-                                                        <%= book.author %>
+                                                        <a href="/authors/<%= book.author_id %>/<%= book.author %>">                                                             <%= book.author %>                                                         </a>
                                                     </p>
                                                     <a href="<%= '/book_profile/'+ book.idbooks %>" class="btn btn-info btn-block mt-auto"> Więcej </a>
                                                 </div>
@@ -139,7 +139,7 @@
                                                     <p class="card-text">
                                                         <strong> <i> <%= book.title %> </i> </strong>
                                                         <br>
-                                                        <%= book.author %>
+                                                        <a href="/authors/<%= book.author_id %>/<%= book.author %>">                                                             <%= book.author %>                                                         </a>
                                                     </p>
                                                     <a href="<%= '/book_profile/'+ book.idbooks %>" class="btn btn-info btn-block mt-auto"> Więcej </a>
                                                 </div>
