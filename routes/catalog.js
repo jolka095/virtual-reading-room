@@ -25,13 +25,39 @@ router.get('/', function (req, res, next) {
 
           res.send("Nie znaleziono kategorii w bazie")
 
-        } else {
-          // console.log(JSON.stringify(result, null, 2))
-          res.render('catalog', { booksArr: result, catArr: result2, user: req.user })
-        }
-      })
-    }
-  })
+        }  if (req.user) {
+          const queryStatement3 = `SELECT * FROM users natural join book_status natural join books natural join book_info WHERE idusers = "${req.user[0].idusers}"; `;            
+          db.query(queryStatement3, (error, result3) => { 
+
+              if (result3 === null || result3 === undefined || result3.length === 0) {
+                  // console.log(JSON.stringify(result2[0], null, 2));
+                  const message = "Nie znaleziono żadnych książek w biblioteczce";
+                  // res.render('resource_not_found', { message: message })
+                  res.render('catalog', { booksArr: result, catArr: result2, user: req.user, libraryArr:  0}) //  0 gdy książek nie ma w biblioteczce
+
+              } else{
+              
+              const queryStatement4 = `SELECT * FROM book_info WHERE book_info.book_id NOT IN (SELECT idbooks FROM book_status where idusers = ${req.user[0].idusers}); `;            
+              db.query(queryStatement4, (error, result4) => {
+    
+                  if (result4 === null || result4 === undefined || result4.length === 0) {
+                      // console.log(JSON.stringify(result2[0], null, 2));
+                      const message = "Nie znaleziono żadnych książek w biblioteczce";
+                      // res.render('resource_not_found', { message: message })
+                      res.render('catalog', { booksArr: result, catArr: result2, user: req.user, libraryArr:  0, not_librarayArr: result4}) //  0 gdy książek nie ma w biblioteczce
+    
+                  }
+                  else{
+                     res.render('catalog', { booksArr: result, catArr: result2, user: req.user, libraryArr: result3, not_librarayArr: result4 })
+                  }
+                })
+                }
+        
+            })
+          }
+        })
+      }
+})
 });
 
 module.exports = router;

@@ -24,52 +24,40 @@ router.get('/:book_id', (req, res, next) => {
             console.log(JSON.stringify(result[0], null, 2));
             
             if (req.user) {
-                const queryStatement2 = `SELECT * FROM book_marks WHERE idbooks = ${req.params.book_id} AND idusers = ${req.user[0].idusers}; `;            
-                db.query(queryStatement2, (error, result2) => {
+                const queryStatement3 = `SELECT * FROM book_status WHERE idbooks = ${req.params.book_id} AND idusers = ${req.user[0].idusers}; `;            
+                        db.query(queryStatement3, (error, result3) => {
 
-                    if (result2 === null || result2 === undefined || result2.length === 0) {
-                        // console.log(JSON.stringify(result2[0], null, 2));
-                        const message = "Nie znaleziono oceny  w bazie";
-                        // res.render('resource_not_found', { message: message })
-                        res.render('book_profile', { book: result[0], user: req.user[0], mark: 10})
+                            if (result3 === null || result3 === undefined || result3.length === 0) {
+                                // console.log(JSON.stringify(result2[0], null, 2));
+                                const message = "Nie znaleziono statusu  w bazie";
+                                // res.render('resource_not_found', { message: message })
+                                res.render('book_profile', { book: result[0], user: req.user[0], mark: 10, status: 0}) // mark 10 gdy oceny nie ma, status 0 gdy ksiązki nie ma w biblioteczce
 
-                    } else{
-                        console.log("\nOK  ZALOGOWANY\n");
-                        res.render('book_profile', { book: result[0], user: req.user[0], mark: result2[0].idmarks })
-                    }
-                
-                })
+                            } else{
+                                const queryStatement2 = `SELECT * FROM book_marks WHERE idbooks = ${req.params.book_id} AND idusers = ${req.user[0].idusers}; `;            
+                                db.query(queryStatement2, (error, result2) => {
+        
+                                    if (result2 === null || result2 === undefined || result2.length === 0) {
+                                        // console.log(JSON.stringify(result2[0], null, 2));
+                                        const message = "Nie znaleziono oceny  w bazie";
+                                        // res.render('resource_not_found', { message: message })
+                                        res.render('book_profile', { book: result[0], user: req.user[0], mark: 10, status: result3[0].idstatus})
+        
+                                    } else{
+                                        console.log("\nOK  ZALOGOWANY\n");
+                                        res.render('book_profile', { book: result[0], user: req.user[0], mark: result2[0].idmarks, status: result3[0].idstatus })
+                                    }
+                                
+                                })
+                            }
+                        
+                        })
+                       
+
             }else {
                 console.log("\nX  NIEZALOGOWANY\n");
                 res.render('book_profile', { book: result[0], user: null })
             }
-        }
-    })
-});
-
-router.get('/:book_id/:mark', (req, res, next) => {
-
-    const queryStatement = `SELECT * FROM book_info WHERE book_id = ${req.params.book_id}; `;
-
-    db.query(queryStatement, (error, result) => {
-
-        if (result === null || result === undefined || result.length === 0) {
-            //   console.log(JSON.stringify(result[0], null, 2));
-            const message = "Nie znaleziono takiej ksiażki w bazie";
-            // res.render('resource_not_found', { message: message })
-            res.render('page_not_found', { user: req.user })
-        } else {
-            console.log(JSON.stringify(result[0], null, 2));
-
-            if (req.user) {
-                console.log("\nOK  ZALOGOWANY\n");
-                res.render('book_profile', { book: result[0], user: req.user[0], mark: req.params.mark})
-            } else {
-                console.log("\nX  NIEZALOGOWANY\n");
-                res.render('book_profile', { book: result[0], user: null })
-            }
-
-
         }
     })
 });
