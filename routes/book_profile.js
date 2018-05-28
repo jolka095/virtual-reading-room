@@ -91,7 +91,7 @@ router.post('/rate_book/:book_id/user/:user_id', (req, res, next) => {
                 "failed": "error ocurred"
             }, null, 2))
         } else {
-            console.log(`Usunięto ${req.params.book_id} przez usera ${req.params.user_id}`)
+            console.log(`Usunięto ${req.params.book_id} przez usera ${req.params.user_id}`);
         db.query(queryStatement, (error, result) => {
 
             if (error) {
@@ -101,7 +101,7 @@ router.post('/rate_book/:book_id/user/:user_id', (req, res, next) => {
                     "failed": "error ocurred"
                 }, null, 2))
             } else {
-                console.log(`Oceniono książkę ${req.params.book_id} przez usera ${req.params.user_id} na ${mark}`)
+                console.log(`Oceniono książkę ${req.params.book_id} przez usera ${req.params.user_id} na ${mark}`);
                 res.redirect(`/book_profile/${req.params.book_id}/${mark}`)
             }
         })
@@ -118,19 +118,45 @@ router.post('/add_to_read/:book_id', function (req, res, next) {
         "idstatus": 2
     };
 
-    console.log(book_st);
+    var books_to_read = `SELECT COUNT(*) as count FROM book_status WHERE idbooks= ${req.params.book_id} AND idstatus=2`;
+    var read_books = `SELECT COUNT(*) as count FROM book_status WHERE idbooks= ${req.params.book_id} AND idstatus=1`;
 
-    db.query(`INSERT into book_status SET ?`, book_st, function (err, rows, fields) {
-        if (err) {
-            console.log("error ocurred", err);
-            res.send({
-                "code": 400,
-                "failed": "error ocurred"
-            })
-        } else {
-            res.redirect(`/catalog/${req.params.book_id}`)
-        }
-    })
+    db.query(read_books, function (err, result) {
+        var read = result[0].count;
+        db.query(books_to_read, function (err, result1) {
+            var to_read = result1[0].count;
+
+            if(read === 0 && to_read === 0) {
+                db.query(`INSERT into book_status SET ?`, book_st, function (err) {
+                    if (err) {
+                        res.send({
+                            "code": 400,
+                            "failed": "could not add to library"
+                        })
+                    } else {
+                        if (to_read > 0) {
+                            db.query(`DELETE from book_status WHERE idbooks=${req.params.book_id} AND idstatus=2`), function (err) {
+                                if (err) {
+                                    res.send({
+                                        "code": 400,
+                                        "failed": "could not delete from library"
+                                    })
+                                } else {
+                                    res.redirect(`/catalog/${req.params.book_id}`)
+                                }
+                            };
+
+                            res.redirect(`/catalog/${req.params.book_id}`)
+                        } else {
+                            res.redirect(`/catalog/${req.params.book_id}`)
+                        }
+                    }
+                });
+            } else {
+                res.redirect(`/catalog/${req.params.book_id}`)
+            }
+        });
+    });
 });
 
 router.post('/read/:book_id', function (req, res, next) {
@@ -142,19 +168,41 @@ router.post('/read/:book_id', function (req, res, next) {
         "idstatus": 1
     };
 
-    console.log(book_st);
+    var books_to_read = `SELECT COUNT(*) as count FROM book_status WHERE idbooks= ${req.params.book_id} AND idstatus=2`;
+    var read_books = `SELECT COUNT(*) as count FROM book_status WHERE idbooks= ${req.params.book_id} AND idstatus=1`;
 
-    db.query(`INSERT into book_status SET ?`, book_st, function (err, rows, fields) {
-        if (err) {
-            console.log("error ocurred", err);
-            res.send({
-                "code": 400,
-                "failed": "error ocurred"
-            })
-        } else {
-            res.redirect(`/catalog/${req.params.book_id}`)
-        }
-    })
+    db.query(read_books, function (err, result) {
+            var read = result[0].count;
+        db.query(books_to_read, function (err, result1) {
+            var to_read = result1[0].count;
+            if (read === 0) {
+                db.query(`INSERT into book_status SET ?`, book_st, function (err, rows) {
+                    if (err) {
+                        res.send({
+                            "code": 400,
+                            "failed": "could not add to library"
+                        })
+                    } else if (to_read > 0) {
+                            db.query(`DELETE from book_status WHERE idbooks=${req.params.book_id} AND idstatus=2`), function (err) {
+                                if (err) {
+                                    res.send({
+                                        "code": 400,
+                                        "failed": "could not delete from library"
+                                    })
+                                } else {
+                                    res.redirect(`/catalog/${req.params.book_id}`)
+                                }};
+
+                            res.redirect(`/catalog/${req.params.book_id}`)
+                        } else {
+                            res.redirect(`/catalog/${req.params.book_id}`)
+                        }
+                });
+            } else {
+                res.redirect(`/catalog/${req.params.book_id}`)
+            }
+        });
+    });
 });
 
 module.exports = router;
