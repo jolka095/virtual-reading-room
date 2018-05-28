@@ -33,7 +33,7 @@ router.get('/', function (req, res, next) {
                   // console.log(JSON.stringify(result2[0], null, 2));
                   const message = "Nie znaleziono żadnych książek w biblioteczce";
                   // res.render('resource_not_found', { message: message })
-                  res.render('catalog', { booksArr: result, catArr: result2, user: req.user, libraryArr:  0}) //  0 gdy książek nie ma w biblioteczce
+                  res.render('catalog', { booksArr: result, catArr: result2, user: req.user, libraryArr:  0, not_librarayArr: 0}) //  0 gdy książek nie ma w biblioteczce
 
               } else{
               
