@@ -14,7 +14,7 @@ router.get('/:series_id/:series_name', function (req, res, next) {
 
     } else {
       if (req.user) {
-        const queryStatement3 = `SELECT * FROM users natural join book_status natural join books natural join book_info WHERE idusers = "${req.user[0].idusers}" AND series_id = ${req.params.series_id}; `;            
+        const queryStatement3 = `SELECT * FROM users natural join book_status natural join books natural join book_info WHERE idusers = "${req.user[0].idusers}" AND series_id = ${req.params.series_id} ORDER BY vol_in_series;; `;            
         db.query(queryStatement3, (error, result3) => { 
 
           if (result3 === null || result3 === undefined || result3.length === 0) {
@@ -24,7 +24,7 @@ router.get('/:series_id/:series_name', function (req, res, next) {
               res.render('series', { booksArr: result, series: req.params.series_name, user: req.user, libraryArr:  0, not_libraryArr: 0}) //  0 gdy książek nie ma w biblioteczce
 
           } else{
-              const queryStatement4 = `SELECT * FROM book_info WHERE book_info.book_id NOT IN (SELECT idbooks FROM book_status where idusers = ${req.user[0].idusers}) AND series_id = ${req.params.series_id}; `;           
+              const queryStatement4 = `SELECT * FROM book_info WHERE book_info.book_id NOT IN (SELECT idbooks FROM book_status where idusers = ${req.user[0].idusers}) AND series_id = ${req.params.series_id} ORDER BY vol_in_series; `;           
               db.query(queryStatement4, (error, result4) => { 
 
                   if (result4 === null || result4 === undefined || result4.length === 0) {

@@ -11,7 +11,7 @@
     <div class="container text-left">
 
     <h2>W serii <em><%= series %></em>:</h2>
-    <hr>
+    
     <%if (user) { %>     
       <br>
       <br>
@@ -190,6 +190,7 @@
         </div>
       </div>
       <% } else {%>
+        <hr>
           
     <%if (booksArr !== undefined && booksArr !== null) { %>
         <div class="books_container">
