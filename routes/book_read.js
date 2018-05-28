@@ -2,7 +2,12 @@ var express = require('express');
 var router = express.Router();
 
 router.get('/:book_id', function(req, res, next) {
-    res.render('book_read');
+    if(req.user){
+        res.render('book_read');
+    } else {
+        res.render('policy');
+    }
+
 });
 
 module.exports = router;
