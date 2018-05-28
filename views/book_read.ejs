@@ -2,8 +2,21 @@
 <html>
 <head>
     <%- include('header.ejs') %>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.5/jszip.min.js"></script>
+
 </head>
 <body>
+
+<div id="area"></div>
+
+
+<script>
+    var book = ePub("./public/src/brzydkie-kaczatko.epub");
+    var rendition = book.renderTo("area", { flow: "paginated", width: "900", height: "600" });
+    var displayed = rendition.display();
+</script>
+
 
 <%- include('footer.ejs') %>
 </body>
