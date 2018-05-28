@@ -33,16 +33,36 @@
                             </div>
                             <% } %>
                             <%if (status !== undefined && status !== null && status == 1) { %>
-                                <h3> Przeczytana </h3>
-                                <h5> Czy tu powinien byc przycisk typu usuń z biblioteczki?</h5>
+                                <h6 class="text-center"> Status:<br> <strong>Przeczytana</strong></h6>
+                                <div class="dropdown show text-center">
+                                    <button class="btn dropdown-toggle" type="button" data-toggle="dropdown" id="dropdownMenuButton"> Zmień </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <!-- <form action = "<%= '/book_profile/read/'+ book.book_id %>"  method = "POST">
+                                        <button class="dropdown-item btn btn-secondary fa fa-check-circle" type="submit" id="przeczytana"> Przeczytane </button>
+                                        </form> -->
+                                        <form action = "<%= '/book_profile/read/remove/'+ book.book_id %>"  method = "POST">
+                                        <button class="dropdown-item btn btn-secondary fa fa-close" type="submit"> Usuń z tej półki </button>
+                                        </form>
+                                    </div>
+                                </div>
                             <% } %>
                             <%if (status !== undefined && status !== null && status == 3) { %>
                                 <h3> Teraz czytam </h3>
                                 <h5> I TO SIE MA CHYBA AUTOMATYCZNIE DODAWAĆ?</h5>
                             <% } %>
-                            <%if (status !== undefined && status !== null && status == 2) { %>
-                                <h3> CHCĘ PRZECZYTAĆ </h3>
-                                <h5>Czy tu powinno być znień status na przeczytane albo usuń?</h5>
+                            <%if (status !== undefined && status !== null && status == 2) { %>                                
+                                <h6 class="text-center"> Status:<br> <strong>Chcę  przeczytać</strong></h6>
+                                <div class="dropdown show text-center">
+                                    <button class="btn dropdown-toggle" type="button" data-toggle="dropdown" id="dropdownMenuButton"> Zmień status </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <form action = "<%= '/book_profile/read/'+ book.book_id %>"  method = "POST">
+                                        <button class="dropdown-item btn btn-secondary fa fa-check-circle" type="submit" id="przeczytana"> Przeczytane </button>
+                                        </form>
+                                        <form action = "<%= '/book_profile/add_to_read/remove/'+ book.book_id %>"  method = "POST">
+                                        <button class="dropdown-item btn btn-secondary fa fa-close" type="submit"> Usuń z tej półki </button>
+                                        </form>
+                                    </div>
+                                </div>
                             <% } %>
 
                         <% } %>
